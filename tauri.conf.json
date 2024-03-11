@@ -1,0 +1,65 @@
+{
+    "build": {
+        "beforeBuildCommand": "npm run build",
+        "beforeDevCommand": "npm run dev",
+        "devPath": "http://127.0.0.1:5173",
+        "distDir": "target/dist"
+    },
+    "package": {
+        "productName": "notizbuch",
+        "version": "0.1.0"
+    },
+    "tauri": {
+        "allowlist": {
+            "all": false
+        },
+        "bundle": {
+            "active": true,
+            "category": "DeveloperTool",
+            "copyright": "",
+            "deb": {
+                "depends": []
+            },
+            "externalBin": [],
+            "icon": [
+                "public/32x32.png",
+                "public/128x128.png",
+                "public/128x128@2x.png",
+                "public/icon.icns",
+                "public/icon.ico"
+            ],
+            "identifier": "com.tj-yang.independent.foss.dev",
+            "longDescription": "",
+            "macOS": {
+                "entitlements": null,
+                "exceptionDomain": "",
+                "frameworks": [],
+                "providerShortName": null,
+                "signingIdentity": null
+            },
+            "resources": [],
+            "shortDescription": "",
+            "targets": "all",
+            "windows": {
+                "certificateThumbprint": null,
+                "digestAlgorithm": "sha256",
+                "timestampUrl": ""
+            }
+        },
+        "security": {
+            "csp": null
+        },
+        "updater": {
+            "active": false
+        },
+        "windows": [
+            {
+                "fullscreen": false,
+                "height": 600,
+                "resizable": true,
+                "title": "Notizbuch",
+                "width": 800
+            }
+        ]
+    }
+}
