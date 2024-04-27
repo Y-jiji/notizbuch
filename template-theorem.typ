@@ -12,10 +12,10 @@
     }
 }
 
-#let box(meta, name, content) = [
-    #let figcounter = [#context counter(figure).display()]
+#let box(meta, name, content) = context [
     #figure(supplement: [#meta], placement: none)[
-        #align(center)[
+        #context [#align(center)[
+            #let figcounter = counter(figure).display()
             // center the rectangle
             #rect(width: 95%, height: auto, stroke: 0.5pt + rgb("#0f0f0f"), inset: 10pt)[
                 // however, the inner text should be aligned to left
@@ -28,14 +28,14 @@
                     _
                 ]
             ]
-        ]
+        ]]
     ]
     #label(name)
 ]
 
-#let proof(name, content, version: none) = [
+#let proof(name, content, version: none) = context [
     #figure(supplement: "Proof", placement: none)[
-        #align(center)[
+        #context [#align(center)[
             // center the rectangle
             #rect(width: 95%, height: auto, stroke: 0.5pt + rgb("#0f0f0f"), inset: 10pt)[
                 // this is somewhat hack-ish
@@ -48,7 +48,7 @@
                     _
                 ]
             ]
-        ]
+        ]]
     ]
     #label(to-string[Proof #version of (#name)])
 ]
