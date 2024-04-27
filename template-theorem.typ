@@ -1,5 +1,17 @@
 #let dd = math.upright("d")
 
+#let to-string(content) = {
+    if content.has("text") {
+        content.text
+    } else if content.has("children") {
+        content.children.map(to-string).join("")
+    } else if content.has("body") {
+        to-string(content.body)
+    } else if content == [ ] {
+        " "
+    }
+}
+
 #let box(meta, name, content) = [
     #let figcounter = [#context counter(figure).display()]
     #figure(supplement: [#meta], placement: none)[
@@ -21,23 +33,16 @@
     #label(name)
 ]
 
-#let proof(name, content) = [
+#let proof(name, content, version: none) = [
     #figure(supplement: "Proof", placement: none)[
         #align(center)[
             // center the rectangle
             #rect(width: 95%, height: auto, stroke: 0.5pt + rgb("#0f0f0f"), inset: 10pt)[
                 // this is somewhat hack-ish
-                #show ref: it => {
-                    let el = it.element
-                    // override theorem references.
-                    numbering(
-                        el.numbering,
-                        ..counter(figure).at(el.location())
-                    )
-                }
                 // however, the inner text should be aligned to left
+                #set ref(supplement: it => [Proof #version of])
                 #align(left)[
-                    *#link(label(name))[Proof of #ref(label(name)) (#name)]  #h(1pt)*
+                    *#ref(label(name)) (#name) #h(1pt)*
                     _
                         #content
                     _
@@ -45,6 +50,7 @@
             ]
         ]
     ]
+    #label(to-string[Proof #version of (#name)])
 ]
 
 #let definition(name, content) = box("Definition", name, content)

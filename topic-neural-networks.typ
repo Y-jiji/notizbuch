@@ -14,4 +14,3 @@ In industry, companies like openai allow users to #link("https://web.archive.org
 To serve multiple LoRAs, we better keep these LoRAs and engineer a custom CUDA kernel to compute them in parallel. Also, we have to mind batching and offloading strategy. 
 
 
-

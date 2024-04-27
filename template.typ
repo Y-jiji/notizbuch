@@ -9,7 +9,6 @@
     #set heading(numbering: "I.1.")
     #set figure(numbering: num => (counter(heading).get().slice(1, -1) + (num,)).map(str).join("."))
     #show link: underline
-
     #show heading: it => [
         #set text(size: 1.5em - 0.1em * it.level)
         #if it.level > 1 {

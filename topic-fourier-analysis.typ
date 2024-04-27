@@ -66,7 +66,7 @@ In this section, we mainly talk about a solution tactic called seperation of var
 
 This tactic can be used to reduce equations of several variables to equations with a single variable. 
 
-However, we have to introduce temporal-spatial wave equation first. 
+However, we have to introduce temporal-spatial wave equation first. This equation depicts not only the motion of a single point, but intertwined motion of particles on a string. 
 
 #figure(caption: "Discrete Temporal Spatial Wave")[
     // picture size
@@ -161,25 +161,40 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
 
 #definition("Spatial Temporal Wave")[
     A spatial temporal wave is defined by equation 
-    $"SpatialTW"(u, a, b, f_0, f_1)$, which is the following: 
+    $"SpatialTW"(u, a, b, c, f,g,h,k)$, which is the following: 
     $
         bold("equation") #h(10pt)
         & frac(1, c^2) dot frac(partial^2 u, partial t^2)(t, x) = frac(partial^2 u, partial x^2)(t, x) \
-        & u(t, a) = f_(0)(t) \
-        & u(t, b) = f_(1)(t) \
+        & f(x) = u(0, x) \
+        & g(x) = frac(partial u, partial t)(t=0, x)\
+        & h(x) = u(t, a) \
+        & k(x) = u(t, b) \
         bold("where") #h(10pt)
-        & u: [a,b] times RR -> RR, #h(4pt) c: RR^+\
-        & f_0: RR -> RR \
-        & f_1: RR -> RR \
+        & u: [a,b] times RR -> RR\
+        & f,g,h,k: RR -> RR \
+        & a,b: RR, #h(4pt) c: RR^+\
         & u "is twice differentiable"
     $
 ]
 
 #theorem("Solution to SpatialTW")[
-    // TODO
+    
 ]
 
-=== Heat Diffusion Process
+#proof("Solution to SpatialTW", version: "A")[
+    One observation is that taking $u(x, t) = v(x + c t)$ or $u(x, t) = w(x - c t)$ solves this equation. 
+    Therefore, we may want to figure out if all solutions can be decomposed as $u(x, t) = v(x - c t) + w(x + c t)$ . \
+    Apply change of variables: $(xi, zeta) <- (x - c t, x + c t)$ to equation
+    $
+    frac(1, c^2) dot frac(partial^2 u, partial t^2)(t, x) = frac(partial^2 u, partial x^2)(t, x)
+    $
+    
+]
+
+#proof("Solution to SpatialTW", version: "B")[
+]
+
+=== Heat Diffusion
 
 === Miscellaneous & Exercises
 
