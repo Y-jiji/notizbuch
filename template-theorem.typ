@@ -12,32 +12,35 @@
     }
 }
 
-#let box(meta, name, content) = context [
+#let box-style = (paint: rgb("#ff0000"), thickness: 0.8pt, dash: "dashed")
+
+#let box(meta, name, justification, content) = [
     #figure(supplement: [#meta], placement: none)[
+        // this context allow us to use the figure counter after figure
         #context [#align(center)[
-            #let figcounter = counter(figure).display()
             // center the rectangle
-            #rect(width: 95%, height: auto, stroke: 0.5pt + rgb("#0f0f0f"), inset: 10pt)[
+            #rect(width: 95%, height: auto, stroke: box-style, inset: 10pt)[
                 // however, the inner text should be aligned to left
-                #align(left)[
+                #align(justification)[
                     // theorem
-                    *#meta #figcounter (#name)* #h(1pt)
+                    *#meta (#name)* #h(1pt)
                     // make the rest italic
                     _
                         #content
                     _
                 ]
+                #align(right)[#text(rgb("#0000ff"), counter(figure).display())]
             ]
         ]]
     ]
     #label(name)
 ]
 
-#let proof(name, content, version: none) = context [
+#let proof(name, content, version: none) = [
     #figure(supplement: "Proof", placement: none)[
         #context [#align(center)[
             // center the rectangle
-            #rect(width: 95%, height: auto, stroke: 0.5pt + rgb("#0f0f0f"), inset: 10pt)[
+            #rect(width: 95%, height: auto, stroke: box-style, inset: 10pt)[
                 // this is somewhat hack-ish
                 // however, the inner text should be aligned to left
                 #set ref(supplement: it => [Proof #version of])
@@ -47,12 +50,15 @@
                         #content
                     _
                 ]
+                #align(right)[#text(rgb("#0000ff"), counter(figure).display())]
             ]
         ]]
     ]
     #label(to-string[Proof #version of (#name)])
 ]
 
-#let definition(name, content) = box("Definition", name, content)
+#let illustration(name, content) = box("Figure", name, center, content)
 
-#let theorem(name, content) = box("Theorem", name, content)
+#let definition(name, content) = box("Definition", name, left, content)
+
+#let theorem(name, content) = box("Theorem", name, left, content)

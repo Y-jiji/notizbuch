@@ -68,7 +68,15 @@ This tactic can be used to reduce equations of several variables to equations wi
 
 However, we have to introduce temporal-spatial wave equation first. This equation depicts not only the motion of a single point, but intertwined motion of particles on a string. 
 
-#figure(caption: "Discrete Temporal Spatial Wave")[
+This model originates from a multi-particle system: 
+- Like any model in classic physics, quantities like $y_((dot))$ are functions of time $t$ by default. 
+- There are tracks on a plane #text(blue, [(blue, dashed line in #ref(label("Vibrating Particles on Tracks")))])
+- These tracks are uniformly distanced #text(red, [($h$ in #ref(label("Vibrating Particles on Tracks")))])
+- There are particles moving along each track #text(black, [($#circle(width: 5pt)$ in #ref(label("Vibrating Particles on Tracks")))])
+- Each particle is affected only by its neighbouring particles. Vertical component of the force given by $y_(j+1)$ to $y_(j)$ is $h^(-1)k(y_(j+1) - y_(j))$ . 
+- Each particle has weight $rho h$ (when we vary $h$, the total weight of this particle string don't change)
+
+#illustration("Vibrating Particles on Tracks")[
     // picture size
     #let width  = 10cm;
     #let height = 5cm;
@@ -139,15 +147,6 @@ However, we have to introduce temporal-spatial wave equation first. This equatio
         )
     })
 ]
-#label("TSWE Illustration")
-
-This model originates from a discrete version:
-- Like any model in classic physics, quantities like $y_((dot))$ are functions of time $t$ by default. 
-- There are tracks on a plane #text(blue, [(blue, dashed line in #ref(label("TSWE Illustration")))])
-- These tracks are uniformly distanced #text(red, [(h in #ref(label("TSWE Illustration")))])
-- There are particles moving along each track #text(black, [($#circle(width: 5pt)$ in #ref(label("TSWE Illustration")))])
-- Each particle is affected only by its neighbouring particles. Vertical component of the force given by $y_(j+1)$ to $y_(j)$ is $h^(-1)k(y_(j+1) - y_(j))$ . 
-- Each particle has weight $rho h$ (when we vary $h$, the total weight of this particle string don't change)
 
 To derive a continuous version, we first write $y_(n)(t)$ as $u(t, x_(n))$ . 
 
@@ -188,7 +187,6 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     $
     frac(1, c^2) dot frac(partial^2 u, partial t^2)(t, x) = frac(partial^2 u, partial x^2)(t, x)
     $
-    
 ]
 
 #proof("Solution to SpatialTW", version: "B")[
