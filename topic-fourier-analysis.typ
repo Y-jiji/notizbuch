@@ -176,6 +176,11 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     $
 ]
 
+#comment("Spatial Temporal Wave")[
+    Regarding degree of freedom, differential expressions look just like difference expressions. 
+    For example, second order difference have $3$ free variables, which is also applicable to second order differential. 
+]
+
 #theorem("Solution to SpatialTW")[
     
 ]
@@ -185,11 +190,28 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     Therefore, we may want to figure out if all solutions can be decomposed as $u(x, t) = v(x - c t) + w(x + c t)$ . \
     Apply change of variables: $(xi, zeta) <- (x - c t, x + c t)$ to equation
     $
-    frac(1, c^2) dot frac(partial^2 u, partial t^2)(t, x) = frac(partial^2 u, partial x^2)(t, x)
+        (frac(partial u, partial x)(x, t), 
+        frac(partial u, partial t)(x, t))
+        =
+        (frac(partial hat(u), partial xi)(xi, zeta), 
+        frac(partial hat(u), partial zeta)(xi, zeta))
+        mat(
+            display(frac(partial xi, partial x)), display(frac(partial xi, partial t));
+            display(frac(partial zeta, partial x)), display(frac(partial zeta, partial t));
+        )
+    $
+    Again, for $display(frac(partial^2 u, partial x^2)(x, t))$, change of variables gives:
+    $
+        (frac(partial^2 u, partial x^2)(x, t), 
+        frac(partial^2 u, partial x partial t)(x, t))
+        =
+        
     $
 ]
 
 #proof("Solution to SpatialTW", version: "B")[
+    Another solution is given by seperation of variables. 
+    We assume $u(x, t) = phi(x) dot psi(t)$ and try to solve $phi$ and $psi$ . 
 ]
 
 === Heat Diffusion

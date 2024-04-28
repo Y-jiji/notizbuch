@@ -1,3 +1,5 @@
+#import "template-attributes.typ": *
+
 #let dd = math.upright("d")
 
 #let to-string(content) = {
@@ -12,14 +14,12 @@
     }
 }
 
-#let box-style = (paint: rgb("#ff0000"), thickness: 0.8pt, dash: "dashed")
-
 #let box(meta, name, justification, content) = [
-    #figure(supplement: [#meta], placement: none)[
+    #figure(supplement: [#meta])[
         // this context allow us to use the figure counter after figure
         #context [#align(center)[
             // center the rectangle
-            #rect(width: 95%, height: auto, stroke: box-style, inset: 10pt)[
+            #rect(width: 95%, height: auto, stroke: box-stroke, inset: 10pt)[
                 // however, the inner text should be aligned to left
                 #align(justification)[
                     // theorem
@@ -29,33 +29,37 @@
                         #content
                     _
                 ]
-                #align(right)[#text(rgb("#0000ff"), counter(figure).display())]
+                #align(right)[#text(blue, counter(figure).display())]
             ]
         ]]
     ]
     #label(name)
 ]
 
-#let proof(name, content, version: none) = [
-    #figure(supplement: "Proof", placement: none)[
+#let attach-to(meta, adposition, target, version, content) = [
+    #figure(supplement: meta)[
         #context [#align(center)[
             // center the rectangle
-            #rect(width: 95%, height: auto, stroke: box-style, inset: 10pt)[
+            #rect(width: 95%, height: auto, stroke: box-stroke, inset: 10pt)[
                 // this is somewhat hack-ish
                 // however, the inner text should be aligned to left
-                #set ref(supplement: it => [Proof #version of])
+                #set ref(supplement: it => [#meta #version #adposition])
                 #align(left)[
-                    *#ref(label(name)) (#name) #h(1pt)*
+                    *#ref(label(target)) (#target) #h(1pt)*
                     _
                         #content
                     _
                 ]
-                #align(right)[#text(rgb("#0000ff"), counter(figure).display())]
+                #align(right)[#text(blue, counter(figure).display())]
             ]
         ]]
     ]
-    #label(to-string[Proof #version of (#name)])
+    #label(to-string[#meta #version of (#target)])
 ]
+
+#let proof(name, version: none, content) = attach-to("Proof", "of", name, version, content)
+
+#let comment(name, version: none, content) = attach-to("Comment", "on", name, version, content)
 
 #let illustration(name, content) = box("Figure", name, center, content)
 
