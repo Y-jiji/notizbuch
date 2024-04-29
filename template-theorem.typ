@@ -1,6 +1,7 @@
 #import "template-attributes.typ": *
 
 #let dd = math.upright("d")
+#let pp = math.partial
 
 #let to-string(content) = {
     if content.has("text") {
@@ -36,14 +37,14 @@
     #label(name)
 ]
 
-#let attach-to(meta, adposition, target, version, content) = [
+#let attach-to(meta, adposition, target, extra, content) = [
     #figure(supplement: meta)[
         #context [#align(center)[
             // center the rectangle
             #rect(width: 95%, height: auto, stroke: box-stroke, inset: 10pt)[
                 // this is somewhat hack-ish
                 // however, the inner text should be aligned to left
-                #set ref(supplement: it => [#meta #version #adposition])
+                #set ref(supplement: it => [#meta #extra #adposition])
                 #align(left)[
                     *#ref(label(target)) (#target) #h(1pt)*
                     _
@@ -54,12 +55,12 @@
             ]
         ]]
     ]
-    #label(to-string[#meta #version of (#target)])
+    #label(to-string[#meta #extra of (#target)])
 ]
 
-#let proof(name, version: none, content) = attach-to("Proof", "of", name, version, content)
+#let proof(name, extra: none, content) = attach-to("Proof", "of", name, extra, content)
 
-#let comment(name, version: none, content) = attach-to("Comment", "on", name, version, content)
+#let comment(name, extra: none, content) = attach-to("Comment", "on", name, extra, content)
 
 #let illustration(name, content) = box("Figure", name, center, content)
 

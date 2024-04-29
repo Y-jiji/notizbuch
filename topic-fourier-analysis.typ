@@ -60,21 +60,22 @@ In physics, simple harmonic motion provides a model for a vibrating spring.
     $
 ]
 
-=== Temporal-spatial Wave Equation
+=== Mechanical Wave
 
 In this section, we mainly talk about a solution tactic called seperation of variables. 
 
 This tactic can be used to reduce equations of several variables to equations with a single variable. 
 
-However, we have to introduce temporal-spatial wave equation first. This equation depicts not only the motion of a single point, but intertwined motion of particles on a string. 
+However, we have to introduce mechanical wave first. This equation depicts not only the motion of a single point, but intertwined motion of particles on a string. 
 
 This model originates from a multi-particle system: 
-- Like any model in classic physics, quantities like $y_((dot))$ are functions of time $t$ by default. 
-- There are tracks on a plane #text(blue, [(blue, dashed line in #ref(label("Vibrating Particles on Tracks")))])
-- These tracks are uniformly distanced #text(red, [($h$ in #ref(label("Vibrating Particles on Tracks")))])
-- There are particles moving along each track #text(black, [($#circle(width: 5pt)$ in #ref(label("Vibrating Particles on Tracks")))])
-- Each particle is affected only by its neighbouring particles. Vertical component of the force given by $y_(j+1)$ to $y_(j)$ is $h^(-1)k(y_(j+1) - y_(j))$ . 
-- Each particle has weight $rho h$ (when we vary $h$, the total weight of this particle string don't change)
++ Like any model in classic physics, quantities like $y_((dot))$ are functions of time $t$ by default. 
+
++ There are tracks on a plane #text(blue, [(blue, dashed line in #ref(label("Vibrating Particles on Tracks")))])
++ These tracks are uniformly distanced #text(red, [($h$ in #ref(label("Vibrating Particles on Tracks")))])
++ There are particles moving along each track #text(black, [($#circle(width: 5pt)$ in #ref(label("Vibrating Particles on Tracks")))])
++ Each particle is affected only by its neighbouring particles. Vertical component of the force given by $y_(j+1)$ to $y_(j)$ is $h^(-1)k(y_(j+1) - y_(j))$ . 
++ Each particle has weight $rho h$ (when we vary $h$, the total weight of this particle string don't change)
 
 #illustration("Vibrating Particles on Tracks")[
     // picture size
@@ -148,70 +149,95 @@ This model originates from a multi-particle system:
     })
 ]
 
-To derive a continuous version, we first write $y_(n)(t)$ as $u(t, x_(n))$ . 
+To derive a continuous extra, we first write $y_(n)(t)$ as $u(t, x_(n))$ . 
 
 By Newton's second law, we have: 
 
 $
-    rho h frac(partial^2 u, partial t^2) (t, x_(n)) = h^(-1)k (u(t, x_(n)+h) + u(t, x_(n)-h) - 2 dot u(t, x_(n)))
+    rho h frac(pp^2 u, pp t^2) (t, x_(n)) = h^(-1)k (u(t, x_(n)+h) + u(t, x_(n)-h) - 2 dot u(t, x_(n)))
 $
 
 When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into: 
 
-#definition("Spatial Temporal Wave")[
-    A spatial temporal wave is defined by equation 
-    $"SpatialTW"(u, a, b, c, f,g,h,k)$, which is the following: 
+#definition("Mechanical Wave")[
+    A mechanical wave is defined by equation 
+    $"MechanicalW"(u, c, f, g)$, which is the following: 
     $
         bold("equation") #h(10pt)
-        & frac(1, c^2) dot frac(partial^2 u, partial t^2)(t, x) = frac(partial^2 u, partial x^2)(t, x) \
-        & f(x) = u(0, x) \
-        & g(x) = frac(partial u, partial t)(t=0, x)\
-        & h(x) = u(t, a) \
-        & k(x) = u(t, b) \
+        & frac(1, c^2) dot frac(pp^2 u, pp t^2)(x, t) = frac(pp^2 u, pp x^2)(x, t) \
+        & f(x) = u(x, 0) \
+        & g(x) = frac(pp u, pp t)(x, t:0)\
+        & u(0, t) = u(pi, t) = 0 \
         bold("where") #h(10pt)
-        & u: [a,b] times RR -> RR\
-        & f,g,h,k: RR -> RR \
-        & a,b: RR, #h(4pt) c: RR^+\
-        & u "is twice differentiable"
+        & u: [0,pi] times RR -> RR\
+        & f,g,h: RR -> RR,#h(0.4em) c: RR^+\
+        & u "is continuously twice differentiable"
     $
 ]
 
-#comment("Spatial Temporal Wave")[
+#comment("Mechanical Wave")[
     Regarding degree of freedom, differential expressions look just like difference expressions. 
     For example, second order difference have $3$ free variables, which is also applicable to second order differential. 
 ]
 
-#theorem("Solution to SpatialTW")[
-    
+#comment("Mechanical Wave", extra: "about differential")[
+    The current symbols used in mathematics is very annoying. 
+    For example, when we write
+    $
+        frac(pp f, pp x)(y,x), frac(pp f, pp x)(x,y), frac(pp f, pp x)(y,z)
+    $
+    How do we know which entry is the partial differentiation applied?
+    To avoid this kind of confusion, here we first "name the entry", and then apply the differentiation. 
+    $
+        frac(pp f, pp x)(y:x,x:y), frac(pp f, pp x)(a,x:b), frac(pp f, pp x)(x:y,z)
+    $
 ]
 
-#proof("Solution to SpatialTW", version: "A")[
-    One observation is that taking $u(x, t) = v(x + c t)$ or $u(x, t) = w(x - c t)$ solves this equation. 
+#theorem("Solution to MechanicalW")[
+]
+
+#proof("Solution to MechanicalW", extra: "A")[
+    One important observation is that taking $u(x, t) = v(x + c t)$ or $u(x, t) = w(x - c t)$ solves this equation. 
     Therefore, we may want to figure out if all solutions can be decomposed as $u(x, t) = v(x - c t) + w(x + c t)$ . \
-    Apply change of variables: $(xi, zeta) <- (x - c t, x + c t)$ to equation
+    Apply change of variables: 
     $
-        (frac(partial u, partial x)(x, t), 
-        frac(partial u, partial t)(x, t))
-        =
-        (frac(partial hat(u), partial xi)(xi, zeta), 
-        frac(partial hat(u), partial zeta)(xi, zeta))
-        mat(
-            display(frac(partial xi, partial x)), display(frac(partial xi, partial t));
-            display(frac(partial zeta, partial x)), display(frac(partial zeta, partial t));
+        mat(xi; zeta) = mat(1, -c; 1, c;)mat(x;t) \
+        u(x,t) 
+        = hat(u)(x-c t, x + c t) \
+            frac(pp^2 u, pp x^2)(x,t) 
+            - frac(1, c^2)frac(pp^2 u, pp t^2)(x,t) 
+        = 4frac(pp^2 hat(u), pp xi pp zeta)(xi: x - c t,zeta: x + c t) 
+        = 0
+    $
+    With the conditions above, we have
+    $
+        frac(pp hat(u), pp xi)(xi, zeta) = frac(pp hat(u), pp xi)(xi, 0)\
+        hat(u)(xi, zeta)
+        = integral_(xi^*=0)^(xi) frac(pp hat(u), pp xi^*)(xi^*, zeta) dd xi^* 
+            + hat(u)(0, zeta) 
+        = hat(u)(xi,0)
+            + hat(u)(0,zeta)
+    $
+    Let $v(xi) = hat(u)(xi, 0)$ and $w(zeta)=hat(u)(0,zeta)$ .
+    $
+        u(x,t) = v(x - c t) + w(x + c t)
+    $
+    Now we can apply the initial and boundary conditions to obtain $v$ and $w$ . 
+    // TODO
+]
+
+#proof("Solution to MechanicalW", extra: "B")[
+    Another solution is given by seperation of variables. 
+    We assume $u(x, t)$ can be written as superpositions of $\{phi(x) dot psi(t): (phi, psi)\}$ and try to solve $phi$ and $psi$ . 
+    This gives us
+    $
+        cases(
+            display(phi(z) - lambda frac(dd^2 phi, dd x^2)(z) = 0)\
+            display(psi(z) - frac(lambda, c^2) frac(dd^2 psi, dd x^2)(z) = 0)
         )
     $
-    Again, for $display(frac(partial^2 u, partial x^2)(x, t))$, change of variables gives:
-    $
-        (frac(partial^2 u, partial x^2)(x, t), 
-        frac(partial^2 u, partial x partial t)(x, t))
-        =
-        
-    $
-]
-
-#proof("Solution to SpatialTW", version: "B")[
-    Another solution is given by seperation of variables. 
-    We assume $u(x, t) = phi(x) dot psi(t)$ and try to solve $phi$ and $psi$ . 
+    When $lambda > 0$, 
+    // TODO: Why lambda < 0 ?
 ]
 
 === Heat Diffusion

@@ -17,9 +17,14 @@
     #show emph: it => {
         text(font: font-italic, style: "italic", it.body)
     }
+    // bold font
     #show strong: it => {
         text(font: font-bold, weight: "bold", it.body)
     }
+    // change enumeration layout
+    #set enum(numbering: n => [#h(0.25em) #str(n) .])
+    // change bullet list layout
+    #set list(marker: [#h(0.25em) $bullet$ #h(0.05em)])
     // add style to links
     #show link: underline
     // add style to headings
