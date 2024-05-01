@@ -221,8 +221,7 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
             + hat(u)(0,zeta)
             - hat(u)(0,0)
     $
-    #TODO[This is fucking wrong $->$]
-    In the above equation, evaluating $hat(u)(0, 0)$ implies $hat(u)(0, 0) = 0$. Let $v(xi) = hat(u)(xi, 0)$ and $w(zeta)=hat(u)(0,zeta)$ .
+    Let $v(xi) = hat(u)(xi, 0)- hat(u)(0,0)$ and $w(zeta)=hat(u)(0,zeta)$ .
     $
         u(x, 0) 
             = v(x) + w(x) = f(x) \
