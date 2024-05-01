@@ -15,6 +15,8 @@
     }
 }
 
+#let TODO(content) = text(green, [TODO: #content])
+
 #let box(meta, name, justification, content) = [
     #figure(supplement: [#meta])[
         // this context allow us to use the figure counter after figure
@@ -67,3 +69,5 @@
 #let definition(name, content) = box("Definition", name, left, content)
 
 #let theorem(name, content) = box("Theorem", name, left, content)
+
+#let example(name, content) = box("Example", name, left, content)

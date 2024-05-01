@@ -1,9 +1,9 @@
 #import "template.typ": *
-#show: setup
+#show: setup("Topic")
 
 = Neural Networks
 
-#summary([#lorem(10)])[#lorem(50)]
+#summary[#lorem(50)]
 
 == Low Rank Adaptation
 

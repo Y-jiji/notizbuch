@@ -1,9 +1,11 @@
 #import "template.typ": *
-#show: setup
+#show: setup("Topic")
 
 = Fourier Analysis
 
-#summary([#lorem(10)])[#lorem(50)]
+#summary[
+    Fourier analysis originates from a series of endavour in solving differential equations. Later, this technique reveals the structure of differential operator, and works well with other tools in functional analysis. 
+]
 
 == Motivating Examples
 
@@ -214,16 +216,25 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
         frac(pp hat(u), pp xi)(xi, zeta) = frac(pp hat(u), pp xi)(xi, 0)\
         hat(u)(xi, zeta)
         = integral_(xi^*=0)^(xi) frac(pp hat(u), pp xi^*)(xi^*, zeta) dd xi^* 
-            + hat(u)(0, zeta) 
+            + hat(u)(0, zeta)
         = hat(u)(xi,0)
             + hat(u)(0,zeta)
+            - hat(u)(0,0)
     $
-    Let $v(xi) = hat(u)(xi, 0)$ and $w(zeta)=hat(u)(0,zeta)$ .
+    #TODO[This is fucking wrong $->$]
+    In the above equation, evaluating $hat(u)(0, 0)$ implies $hat(u)(0, 0) = 0$. Let $v(xi) = hat(u)(xi, 0)$ and $w(zeta)=hat(u)(0,zeta)$ .
     $
-        u(x,t) = v(x - c t) + w(x + c t)
+        u(x, 0) 
+            = v(x) + w(x) = f(x) \
+        frac(pp u, pp t)(x, t:0)
+            = -c frac(pp v, pp x)(x) + c frac(pp w, pp x)(x) = g(x)
     $
-    Now we can apply the initial and boundary conditions to obtain $v$ and $w$ . 
-    // TODO
+    Therefore, when $x in [0, pi]$
+    $
+        v(x) = 1/2 f(x) -1/2 integral_0^x c^(-1)g(x^*) dd x^*\
+        u(x) = 1/2 f(x) +1/2 integral_0^x c^(-1)g(x^*) dd x^*
+    $
+    #TODO[How to extend this result over $t$ ?]
 ]
 
 #proof("Solution to MechanicalW", extra: "B")[
@@ -236,13 +247,58 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
             display(psi(z) - frac(lambda, c^2) frac(dd^2 psi, dd x^2)(z) = 0)
         )
     $
-    When $lambda > 0$, 
-    // TODO: Why lambda < 0 ?
+    #TODO[In book, there is no formal proof for (lamba < 0), so I'm stuck. May be after reviewing fourier series I'll be able to do this. ]
 ]
 
 === Heat Diffusion
 
 === Miscellaneous & Exercises
+
+#definition("Laplacian")[
+    For a function $u:RR times RR -> RR$, its Laplacian is defined as:
+    $
+        Delta(u) 
+            = (x,y) |-> frac(pp^2 u, pp x^2)(x,y) + frac(pp^2 u, pp y^2)(x,y)
+    $
+]
+
+#theorem("Polar Expression of Laplacian")[
+    Let $hat(u)(r, theta) = u(r cos(theta), r sin(theta))$ where $hat(u): [0,+infinity) times [0, 2pi) -> RR$
+    $
+        Delta(u)(r cos(theta), r sin(theta))
+            = frac(pp^2 hat(u), pp r^2)(r, theta)
+            + frac(1, r)frac(pp hat(u), pp r)(r, theta)
+            + frac(1, r^2)frac(pp^2 hat(u), pp theta^2)(r, theta)
+    $
+]
+
+#proof("Polar Expression of Laplacian")[Use $x=r cos(theta)$ and $y=r sin(theta)$ as macro. 
+    $
+    frac(pp hat(u), pp r)(r, theta) &
+        = cos(theta) frac(pp u, pp x)(x,y) 
+        + sin(theta) frac(pp u, pp y)(x,y)\
+    frac(pp^2 hat(u), pp r^2)(r, theta) &
+        = cos^2(theta) frac(pp u, pp x)(x,y) 
+        + sin^2(theta) frac(pp u, pp y)(x,y)\
+        &+ 2 sin(theta) cos(theta) frac(pp^2 u, pp x pp y)(x,y)\
+    frac(pp hat(u), pp theta)(r, theta) &
+        = -r sin(theta) frac(pp u, pp x)(x,y)
+        +r cos(theta) frac(pp u, pp y)(x,y)\
+    frac(pp^2 hat(u), pp theta^2)(r, theta) &
+        = -r cos(theta) frac(pp u, pp x)(x,y)
+        -r sin(theta) frac(pp u, pp y)(x,y)\
+        &+ r^2 sin^2(theta) frac(pp^2 u, pp x^2)(x,y)\
+        &-2r^2 sin(theta) cos(theta) frac(pp^2 u, pp x pp y)(x,y)\
+        &+r^2 cos^2(theta)frac(pp^2 u, pp y^2)(x,y)
+    $
+    Adding them up proves the result
+    $
+        Delta(u)(x,y)
+            = frac(pp^2 hat(u), pp r^2)(r, theta)
+            + frac(1, r)frac(pp hat(u), pp r)(r, theta)
+            + frac(1, r^2)frac(pp^2 hat(u), pp theta^2)(r, theta)
+    $
+]
 
 == Fourier Series
 
