@@ -1,4 +1,4 @@
-#let build-cover(width, height, h-margin, w-margin, long-0, long-1, short-0, short-1, short-2) = {
+#let build-eva(width, height, h-margin, w-margin, long-0, long-1, short-0, short-1, short-2) = {
     set text(font: "FOT-Matisse Pro")
     set page(fill: black)
     set text(fill: white)
@@ -26,3 +26,4 @@
         ]
     ]
 }
+

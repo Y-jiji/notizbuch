@@ -1,7 +1,7 @@
 #import "template-theorem.typ": *
 #import "template-summary.typ": *
 #import "template-attributes.typ": *
-#import "template-eva.typ": *
+#import "template-evagelion.typ": *
 
 #let setup(kind) = doc => context [
     // use heading
