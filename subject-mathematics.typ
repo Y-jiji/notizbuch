@@ -8,3 +8,7 @@
 #pagebreak()
 #context build-cover((595.28pt-5cm).to-absolute(), (841.89pt-5cm).to-absolute(), 2.5cm, 2.5cm, "Advanced", "Algebra", "代数", "だ", "いすう")
 #include "topic-finite-linear-space.typ"
+
+#pagebreak()
+#context build-cover((595.28pt-5cm).to-absolute(), (841.89pt-5cm).to-absolute(), 2.5cm, 2.5cm, "Contemplated", "Math", "数学", "反省", "はんせい")
+#include "topic-soft-and-hard-math.typ"

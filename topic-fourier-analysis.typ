@@ -35,7 +35,7 @@ In physics, simple harmonic motion provides a model for a vibrating spring.
     $
 ]
 
-#proof("Solution to SimpleHM")[
+#proof("Theorem:Solution_to_SimpleHM")[
     Given $"SimpleHM"(y, k)$, we verify: 
     $
         frac(dd^2 y, dd t^2)(t) = - a k^2 sin(k t) - b k^2 cos(k t)
@@ -55,14 +55,13 @@ In physics, simple harmonic motion provides a model for a vibrating spring.
         h(t) = sin(k t) dot y (t) + cos(k t) dot k^(-1) frac(d y, d t)(t)\
         frac(dd h, dd t)(t) = 0
     $
-    Let $a = g(t)$ and $b = h(t)$.
-    We have
+    Let $b = g(t)$ and $a = h(t)$, since $y(t) = h(t) dot sin(k t) + g(t) dot cos(k t)$. We have
     $
-        y(t) = a dot cos(k t) + b dot sin(k t)
+        y(t) = a dot sin(k t) + b dot cos(k t)
     $
 ]
 
-=== Mechanical Wave
+=== Mechanical Wave <Heading-L3:Mechanical_Wave>
 
 In this section, we mainly talk about a solution tactic called seperation of variables. 
 
@@ -73,9 +72,9 @@ However, we have to introduce mechanical wave first. This equation depicts not o
 This model originates from a multi-particle system: 
 + Like any model in classic physics, quantities like $y_((dot))$ are functions of time $t$ by default. 
 
-+ There are tracks on a plane #text(blue, [(blue, dashed line in #ref(label("Vibrating Particles on Tracks")))])
-+ These tracks are uniformly distanced #text(red, [($h$ in #ref(label("Vibrating Particles on Tracks")))])
-+ There are particles moving along each track #text(black, [($#circle(width: 5pt)$ in #ref(label("Vibrating Particles on Tracks")))])
++ There are tracks on a plane #text(blue, [(blue, dashed line in @Figure:Vibrating_Particles_on_Tracks)])
++ These tracks are uniformly distanced #text(red, [($h$ in @Figure:Vibrating_Particles_on_Tracks)])
++ There are particles moving along each track #text(green, [($#circle(width: 5pt, stroke: green)$ in @Figure:Vibrating_Particles_on_Tracks)])
 + Each particle is affected only by its neighbouring particles. Vertical component of the force given by $y_(j+1)$ to $y_(j)$ is $h^(-1)k(y_(j+1) - y_(j))$ . 
 + Each particle has weight $rho h$ (when we vary $h$, the total weight of this particle string don't change)
 
@@ -85,8 +84,12 @@ This model originates from a multi-particle system:
     #let height = 5cm;
     // marker size
     #let s = 5pt;
-    #let c = circle(width: s);
+    #let c = circle(width: s, stroke: green);
     #let computex(x) = x / 5 * width + 0.5 * width;
+    #let jp(dx, dy, content) = context [
+        #let s = measure(content);
+        #place(bottom + left, dx: dx - s.width / 2, dy: dy - s.height / 2)[#content]
+    ]
     #rect(width: width, height: height, inset: 0pt, outset: 0pt, stroke: none, {
         let data = range(-2, 3).map(x => {
             let y = calc.cos(x + 0.8) * calc.cos(x + 0.6);
@@ -98,25 +101,19 @@ This model originates from a multi-particle system:
             (x, y, tick("x"), tick("y"))
         })
         // ellipis
-        place(
-            bottom + left, 
-            dx: computex(-2.5) - 3 * s, 
-            dy: -0.20 * height, 
+        jp(
+            computex(-2.5) - 3 * s, 
+            -0.20 * height, 
             $dots dots$
         );
-        place(
-            bottom + left, 
-            dx: computex(3) - 6 * s, 
-            dy: -0.20 * height, 
+        jp(
+            computex(3) - 6 * s, 
+            -0.20 * height, 
             $dots dots$
         );
+        // the line
         for item in data {
-            let placey(dy, content) = place(
-                bottom + left, 
-                dx: item.at(0) - s/2, 
-                dy: dy + s/2, 
-                content
-            );
+            let placey(dy, content) = jp(item.at(0), dy, content);
             // y circle and y_(...)
             placey(-0.40 * height + item.at(1), c);
             placey(-0.50 * height + item.at(1), item.at(3));
@@ -136,9 +133,9 @@ This model originates from a multi-particle system:
         for item in data.slice(0, -1).zip(data.slice(1)) {
             // link between two lines
             let i = item.at(0);
-            let i = (i.at(0), -0.40 * height + i.at(1));
+            let i = (i.at(0), -0.40 * height + i.at(1) - s);
             let j = item.at(1);
-            let j = (j.at(0), -0.40 * height + j.at(1));
+            let j = (j.at(0), -0.40 * height + j.at(1) - s);
             place(bottom + left, dx: 0pt, dy: 0pt, line(start: i, end: j));
         }
         // the width marker (h)
@@ -173,16 +170,17 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
         bold("where") #h(10pt)
         & u: [0,pi] times RR -> RR\
         & f,g,h: RR -> RR,#h(0.4em) c: RR^+\
-        & u "is continuously twice differentiable"
+        & u "is continuously twice differentiable"\
+        & u "is bounded"
     $
 ]
 
-#comment("Mechanical Wave")[
+#comment("Definition:Mechanical_Wave")[
     Regarding degree of freedom, differential expressions look just like difference expressions. 
     For example, second order difference have $3$ free variables, which is also applicable to second order differential. 
 ]
 
-#comment("Mechanical Wave", extra: "about differential")[
+#comment("Definition:Mechanical_Wave", extra: "about differential")[
     The current symbols used in mathematics is very annoying. 
     For example, when we write
     $
@@ -196,10 +194,26 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
 ]
 
 #theorem("Solution to MechanicalW")[
+    Solution to $"MechanicalW"(u, c, f, g)$ can be written as $u(x,t)=v(x - c t) + w(x + c t)$ , where $v$ and $w$ are $2 pi$-periodic functions. 
+    #TODO[definition of $T$-periodic function]
+    $
+        v(x) = cases(
+            & display(1/2 f(x) -1/2 integral_0^x c^(-1)g(x^*) dd x^*) 
+                & "where" x in [0,pi]\
+            & -w(2pi - t)
+                & "where" x in (pi, 2pi)\
+        )\
+        w(x) = cases(
+            & display(1/2 f(x) +1/2 integral_0^x c^(-1)g(x^*) dd x^*)
+                & "where" x in [0, pi]\
+            & -v(2pi -t)
+                & "where" x in (pi, 2pi)
+        )
+    $
 ]
 
-#proof("Solution to MechanicalW", extra: "A")[
-    One important observation is that taking $u(x, t) = v(x + c t)$ or $u(x, t) = w(x - c t)$ solves this equation. 
+#proof("Theorem:Solution_to_MechanicalW", extra: "A")[
+    One important observation is that taking $u(x, t) = v(x - c t)$ or $u(x, t) = w(x + c t)$ solves this equation. 
     Therefore, we may want to figure out if all solutions can be decomposed as $u(x, t) = v(x - c t) + w(x + c t)$ . \
     Apply change of variables: 
     $
@@ -222,34 +236,135 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
             - hat(u)(0,0)
     $
     Let $v(xi) = hat(u)(xi, 0)- hat(u)(0,0)$ and $w(zeta)=hat(u)(0,zeta)$ .
+    Using the following equations $forall x in [0, pi]$:
     $
-        u(x, 0) 
-            = v(x) + w(x) = f(x) \
-        frac(pp u, pp t)(x, t:0)
-            = -c frac(pp v, pp x)(x) + c frac(pp w, pp x)(x) = g(x)
+        cases(
+            display(
+                u(x, 0) = v(x) + w(x) = f(x)
+            ) \
+            display(
+                frac(pp u, pp t)(x, t:0)
+                    = -c frac(pp v, pp x)(x) + c frac(pp w, pp x)(x) 
+                    = g(x)
+            )
+        )
     $
-    Therefore, when $x in [0, pi]$
+    Therefore, when $forall x in [0, pi]$
     $
-        v(x) = 1/2 f(x) -1/2 integral_0^x c^(-1)g(x^*) dd x^*\
-        u(x) = 1/2 f(x) +1/2 integral_0^x c^(-1)g(x^*) dd x^*
+        v(x) = 1/2 f(x) -1/2 integral_0^x c^(-1)g(x^*) dd x^* - C\
+        w(x) = 1/2 f(x) +1/2 integral_0^x c^(-1)g(x^*) dd x^* + C
     $
-    #TODO[How to extend this result over $t$ ?]
+    Apply boundary conditions $u(pi, t) = u(0, t) = 0$, we find that $forall t in RR^+$
+    $
+        v(-c t) + w(c t) = 0\
+        v(pi -c t) + w(pi + c t) = 0
+    $
+    Take $display(t = t^*-frac(pi,c))$ and $t = t^*$ where $t^* > pi/c$, we find that:
+    $
+        w(-pi + c t^*) = w(pi + c t^*)
+    $
+    Therefore, $w$ are $2 pi$-periodic on $RR^+$, which also means $v$ is $2pi$-periodic on $RR$. 
+    For $t in [pi, 2pi]$:
+    $
+        w(t)=-v(2 pi - t) = -1/2 f(2pi -t) + 1/2 integral_0^(2pi -t) c^(-1)g(x^*) dd x^* + C\
+        v(t)=-w(2 pi - t) = -1/2 f(2pi -t) - 1/2 integral_0^(2pi -t) c^(-1)g(x^*) dd x^* - C
+    $
 ]
 
-#proof("Solution to MechanicalW", extra: "B")[
+#proof("Theorem:Solution_to_MechanicalW", extra: "B")[
     Another solution is given by seperation of variables. 
     We assume $u(x, t)$ can be written as superpositions of $\{phi(x) dot psi(t): (phi, psi)\}$ and try to solve $phi$ and $psi$ . 
-    This gives us
+    This gives us $exists lambda<0:$
     $
         cases(
             display(phi(z) - lambda frac(dd^2 phi, dd x^2)(z) = 0)\
             display(psi(z) - frac(lambda, c^2) frac(dd^2 psi, dd x^2)(z) = 0)
         )
     $
-    #TODO[In book, there is no formal proof for (lamba < 0), so I'm stuck. May be after reviewing fourier series I'll be able to do this. ]
+    Here we must have $lambda < 0$, or otherwise it gives the trivial solution or a divergent solution over time, which violates the condition that $u$ is bounded. \
+    Solving these equations as $display("SimpleHM"(phi, 1/sqrt(lambda)))$ and $display("SimpleHM"(phi, c/sqrt(lambda)))$ . 
+    A valid base solution (regardless of boundary conditions) can be written as
+    $
+        u(x,t) = sin(m(x-zeta)) dot cos(m c(t-theta))
+    $
+    where $zeta$ and $theta$ are free parameters, and for simpliciy, we write $lambda$ as $m^(-2)$. \
+    Applying boundary condition $u(0,t)=u(pi,t)=0$ . It is clear that
+    $
+        sin(-m zeta) = 0\
+        sin(-m(pi -zeta)) = 0\
+    $
+    We can conclude that $m zeta$ is divisible by $pi$ and $m pi$ is divisible by $pi$. Therefore, $m$ must be an integer and $m zeta$ can be omitted inside $sin(dot)$ function. 
+    $
+        u(x,t)=sin(m x)dot cos(m c(t-theta))
+    $
+    #TODO[Uniqueness of solution given by Fourier Series]
 ]
 
-=== Heat Diffusion
+#comment("Proof-B:Theorem:Solution_to_MechanicalW")[
+    Historically, some famous mathematicians like Gauss incline strongly to @Proof-A:Theorem:Solution_to_MechanicalW. Their main reason is that @Proof-B:Theorem:Solution_to_MechanicalW is not rigorious, because people generally don't believe functions can be decomposed into trigonometric series. This tendency lasts until, later Fourier formally proves the uniqueness of trigonometric decomposition in his study of heat flow (@Heading-L3:Heat_Flow). 
+]
+
+=== Heat Flow <Heading-L3:Heat_Flow>
+
+While in @Heading-L3:Mechanical_Wave, we demonstrated how to solve differential equations with standing waves in @Proof-A:Theorem:Solution_to_MechanicalW and seperation of variables in @Proof-B:Theorem:Solution_to_MechanicalW, the method of standing waves are not applicable to many other differentiale equations. In this section, we introduce another physical problem: heat flow, and we will see that heat flow can be solved with seperation of variables. 
+
+The thermal energy on a plate changes with time. Let's first suppose the plate is divided into small grids and inside seach grid, heat is transported instantly. Therefore, each grid internally have uniform temperature. 
+
+According to Newton's law of cooling, the adjacent tiles results in the following equation:
+$
+    kappa h^2 frac(pp u, pp t)(x_n, y_n, t) =
+    rho (u(x_n, y_(n+1), t) - u(x_n, y_n, t))\
+    + rho (u(x_n, y_(n-1), t) - u(x_n, y_n, t))\
+    + rho (u(x_(n+1), y_n, t) - u(x_n, y_n, t))\
+    + rho (u(x_(n-1), y_n, t) - u(x_n, y_n, t))
+$
+
+On the left hand side, $kappa h^2 u(x_n,y_n,t)$ is the thermal energy on a square, and the partial derivative describes how temperature changes over time. On the right hand side, $rho$ is the conductivity coefficient, and $u(x_((dot)), y_((dot)), t) - u(x_n, y_n, t)$ is the difference of temperature between adjacent grids. 
+
+#illustration("Heat Flow on a Plate")[
+    // for padding
+    #rect(stroke: none, inset: 10pt)[
+        // draw rectangles in grid
+        #let r = rect(stroke: blue, width: 3cm, height: 3cm, outset: 0pt, inset: 0pt)[]
+        #grid(columns: 3, ..range(9).map(_ => r))
+        // justified placement
+        #let jp(dx, dy, content) = context [
+            #let s = measure(content);
+            #place(dx: dx - s.width / 2, dy: dy - s.height / 2)[#content]
+        ]
+        // color green
+        #let cg(x) = [#set text(green) 
+            #x]
+        // 4 math.display as space
+        #let d4 = for i in range(4) { math.display(" ") }
+        // rotate 90 deg
+        #let r9(x) = rotate(90deg, x)
+        #jp(100%/3, -50%, [$xarrow(sym: <->, d4)$])
+        #jp(50%, -100%/3, [#r9($xarrow(sym: <->, d4)$)])
+        #jp(200%/3, -50%, [$xarrow(sym: <->, d4)$])
+        #jp(50%, -200%/3, [#r9($xarrow(sym: <->, d4)$)])
+        #jp(50%, -50%,      [$u(x_n,y_n,t)$])
+        #jp(50%, -50%/3,    [$u(x_n,y_(n+1),t)$])
+        #jp(50%, -250%/3,   [$u(x_n,y_(n-1),t)$])
+        #jp(250%/3, -50%,   [$u(x_(n+1),y_n,t)$])
+        #jp(50%/3, -50%,    [$u(x_(n-1),y_n,t)$])
+        #jp(100% + 5pt, -250%/3, [#cg(r9($overbracket(d4 d4 d4 d4 d4 d4,h)$))])
+        #jp(250%/3, -100% - 5pt, [#cg($overbracket(d4 d4 d4 d4 d4 d4,h)$)])
+    ]
+]
+
+Write $x_(n+m)$ as $x_(n)+ m h$ and $y_(n+m)$ as $y_(n) + m h$, mimicing @Heading-L3:Mechanical_Wave, we can form a formal definition. 
+
+#definition("Heat Flow")[
+    $"HeatF"(u)$
+    $
+        bold("equation") #h(10pt)        
+        & frac(pp u, pp t)(x,y,t) = frac(pp^2 u, pp x^2)(x,y,t) + frac(pp^2 u, pp y^2)(x,y,t)\
+        bold("where") #h(10pt)
+        & u:RR^3 -> RR
+    $
+    #TODO("Boundary Conditions")
+]
 
 === Miscellaneous & Exercises
 
@@ -271,24 +386,30 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     $
 ]
 
-#proof("Polar Expression of Laplacian")[Use $x=r cos(theta)$ and $y=r sin(theta)$ as macro. 
+#proof("Theorem:Polar_Expression_of_Laplacian")[Use $x=r cos(theta)$ and $y=r sin(theta)$ as macro. 
     $
     frac(pp hat(u), pp r)(r, theta) &
         = cos(theta) frac(pp u, pp x)(x,y) 
         + sin(theta) frac(pp u, pp y)(x,y)\
+    $
+    $
     frac(pp^2 hat(u), pp r^2)(r, theta) &
         = cos^2(theta) frac(pp u, pp x)(x,y) 
         + sin^2(theta) frac(pp u, pp y)(x,y)\
         &+ 2 sin(theta) cos(theta) frac(pp^2 u, pp x pp y)(x,y)\
+    $
+    $
     frac(pp hat(u), pp theta)(r, theta) &
         = -r sin(theta) frac(pp u, pp x)(x,y)
         +r cos(theta) frac(pp u, pp y)(x,y)\
-    frac(pp^2 hat(u), pp theta^2)(r, theta) &
-        = -r cos(theta) frac(pp u, pp x)(x,y)
-        -r sin(theta) frac(pp u, pp y)(x,y)\
-        &+ r^2 sin^2(theta) frac(pp^2 u, pp x^2)(x,y)\
+    $
+    $
+    frac(pp^2 hat(u), pp theta^2)(r, theta)
+        &= -r cos(theta) frac(pp u, pp x)(x,y)
+            -r sin(theta) frac(pp u, pp y)(x,y)\
+        &+ r^2 sin^2(theta) frac(pp^2 u, pp x^2)(x,y)
+            +r^2 cos^2(theta)frac(pp^2 u, pp y^2)(x,y)\
         &-2r^2 sin(theta) cos(theta) frac(pp^2 u, pp x pp y)(x,y)\
-        &+r^2 cos^2(theta)frac(pp^2 u, pp y^2)(x,y)
     $
     Adding them up proves the result
     $
@@ -299,7 +420,10 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     $
 ]
 
+#TODO[Clean up the exercises]
+
 == Fourier Series
 
-== Fourier Transformation
 
+
+== Fourier Transformation

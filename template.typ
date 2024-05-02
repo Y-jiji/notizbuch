@@ -5,15 +5,18 @@
 
 #let setup(kind) = doc => context [
     // use heading
-    #set heading(numbering: "I.1.")
+    #set heading(numbering: "I/1.1.")
+    #set par(linebreaks: "optimized")
     // use relative numbering in figures
     #set figure(numbering: n => {
         let head = query(selector(heading).before(here())).last().location()
         let n = counter(figure).get().last() - counter(figure).at(head).last()
+        str(counter(heading).display("I.").split(".").at(0))
+        "/"
         (counter(heading).get().slice(1) + (n,)).map(str).join(".")
     })
     // normal font
-    #set text(font: font-japanese, style: "normal", lang: "ja")
+    #set text(font: font-japanese, style: "normal", lang: "ja", weight: "light")
     #set text(font: font-normal, style: "normal", lang: "en")
     // italic font
     #show emph: it => {
@@ -29,9 +32,15 @@
     #set list(marker: [#h(0.25em) $bullet$ #h(0.05em)])
     // add style to links
     #show link: underline
+    #set heading(depth : 1, supplement: "Topic")
+    #set heading(depth : 2, supplement: "Section")
+    #set heading(depth : 3, supplement: "Section")
+    #set heading(depth : 4, supplement: "Section")
+    #set heading(depth : 5, supplement: "Section")
+    #set heading(depth : 6, supplement: "Section")
     // add style to headings
-    #show heading: it => {
-        set text(size: 1.5em - 0.1em * it.level)
+    #show heading: it => context {
+        set text(size: 1.6em - 0.1em * it.level)
         strong(
             if it.level > 1 [
                 #counter(heading).get().slice(1).map(str).join("."). 

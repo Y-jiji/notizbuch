@@ -1,7 +1,7 @@
 #let build-cover(width, height, h-margin, w-margin, long-0, long-1, short-0, short-1, short-2) = {
     set text(font: "FOT-Matisse Pro")
     set page(fill: black)
-    set text(stroke: (paint: red, thickness: 1.5pt), fill: white)
+    set text(fill: white)
     context[
         #let long-1-size = width.pt() / measure(long-1).width.pt() * 1em.to-absolute();
         #place(bottom + right, dx: 0pt, dy: 0pt)[#text(long-1-size, long-1)]

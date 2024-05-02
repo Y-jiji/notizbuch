@@ -1,6 +1,6 @@
 #let blue  = rgb("#0000ff")
 #let red   = rgb("#ff0000")
-#let green = rgb("#00aa00")
+#let green = rgb("#00dd00")
 #let font-bold   = ("EB Garamond", "Noto Serif CJK")
 #let font-italic = ("Linux Libertine", "Noto Serif CJK")
 #let font-normal = ("palatino", "Noto Serif CJK")
