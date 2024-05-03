@@ -180,7 +180,7 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     For example, second order difference have $3$ free variables, which is also applicable to second order differential. 
 ]
 
-#comment("Definition:Mechanical_Wave", extra: "about differential")[
+#comment("Definition:Mechanical_Wave", alter: "Differential Symbol")[
     The current symbols used in mathematics is very annoying. 
     For example, when we write
     $
@@ -424,6 +424,57 @@ Write $x_(n+m)$ as $x_(n)+ m h$ and $y_(n+m)$ as $y_(n) + m h$, mimicing @Headin
 
 == Fourier Series
 
+=== Basic Definitions
 
+Fourier series is defined for functions with bounded domain. 
+
+#definition("Fourier Coefficient")[
+    For a function $f: [a, b] -> RR$ where $f(a) = f(b)$. 
+    Its $n$-th Fourier coefficient $hat(f) = "FourierCoeff"(f): ZZ -> CC$ is defined as:
+    $
+        &hat(f)(n) = frac(1,b-a) integral_a^b f(x) exp(-2pi i n x slash L) sp dd x\
+        &"where" i "is the imaginary unit"\
+        &"where" L "is" b - a
+    $
+]
+
+#definition("Fourier Series")[
+    For a function $f: [a, b] -> RR$ where $f(a) = f(b)$. 
+    Its $n$-th partial sum in Fourier series $tilde(f) = "FourierS"(f): NN -> CC$ is defined as:
+    $
+        &tilde(f)(n)(x) = sum_(m=-n)^n hat(f)(n)(x) exp(2 pi i m x slash L)\
+        &"where" i "is the imaginary unit"\
+        &"where" L "is" b - a\
+        &"where" hat(f) "is" "FourierCoeff"(f)
+    $
+]
+
+It is natural to ask if Fourier series converges to the original function, and if Fourier coefficients give a unique description of a function. 
+
+#theorem("Convergence of FourierS")[
+    For a function $f: [a, b] -> RR$ where $f(a) = f(b)$, if $f$ is square Lebesgue integrable, then except for a set $E$ of measure zero, 
+    $
+        forall x in [a,b] backslash E: lim_(n -> infinity) tilde(f)(n)(x) = f(x)
+    $
+    #TODO[Definition of square Lebesgue integrable]
+    #TODO[Proof of this theorem]
+]
+
+#collary("Theorem:Convergence_of_FourierS", alter: "Uniqueness of FourierS")[
+    If functions $f$ and $g$ on $[a,b] -> RR$ have the same Fourier coefficients, then except for a set $E$ of measure zero,
+    $
+        forall x in [a,b] backslash E: f(x) =g(x)
+    $
+]
+
+#theorem("Weaker Convergence of FourierS")[
+    For a Riemann integrable function, $f$ 
+]
+
+=== Convolutions
+
+
+
+=== Good Kernels
 
 == Fourier Transformation

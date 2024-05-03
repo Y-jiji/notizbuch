@@ -48,7 +48,7 @@ Compared to the "normally hard" approach:
 
 The soft style @Proof-A:Lemma:Matrix_Determinant proof makes use of more geometric intuition, but being less direct. This kind of approach is very hard to proceed when the understanding of the subject is not complete. 
 
-== Psychological Root
+== Psychological Cause
 
 === T/ First Impact <Heading-L3:First-Impact>
 
@@ -68,3 +68,4 @@ It was not until I got into university that I finally started to work on formal 
 
 == Methods for Correction
 
+#TODO[Write what the heading suggests]

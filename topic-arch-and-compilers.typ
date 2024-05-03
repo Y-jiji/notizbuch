@@ -12,9 +12,9 @@
 ]
 
 Typically, this concept usually involves stack allocation & calling conventions, i.e. the following problems needs to be addressed before we proceed engineering:
-- When a function is invoked, where to put the parameters?
-- What kind of computation can be done in registers?
 - How to pass the computation results?
+- What kind of computation can be done in registers?
+- When a function is invoked, where to put the parameters?
 
 === Considerations: Closure
 

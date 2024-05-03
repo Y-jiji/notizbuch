@@ -16,8 +16,7 @@
         (counter(heading).get().slice(1) + (n,)).map(str).join(".")
     })
     // normal font
-    #set text(font: font-japanese, style: "normal", lang: "ja", weight: "light")
-    #set text(font: font-normal, style: "normal", lang: "en")
+    #set text(font: font-normal, style: "normal", overhang: false)
     // italic font
     #show emph: it => {
         text(font: font-italic, style: "italic", it.body)

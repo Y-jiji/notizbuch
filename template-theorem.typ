@@ -3,6 +3,7 @@
 
 #let dd = math.upright("d")
 #let pp = math.partial
+#let sp = math.display(" ")
 
 #let to-string(content) = {
     if content.has("text") {
@@ -40,20 +41,27 @@
     ]]
 ]
 
-#let attach-to(meta, adposition, target, extra, breakable, content) = [
+#let attach-box(meta, adposition, target, extra, alter, breakable, content) = [
     // center the rectangle
     #align(center)[#block(width: 98%, height: auto, stroke: box-stroke, inset: 10pt, breakable: breakable)[
-        #if extra == none {
+        #if alter != none {
+            place[#figure(supplement: meta)[]#label(to-string[#meta:#alter.replace(" ", "_")])]
+        } else if extra == none {
             place[#figure(supplement: meta)[]#label(to-string[#meta:#target])]
         } else {
             place[#figure(supplement: meta)[]#label(to-string[#meta\-#extra.replace(" ", "_"):#target])]
+        }
+        #let alter = if alter == none {
+            target.split(":").at(-1).replace("_", " ")
+        } else {
+            alter
         }
         // this is somewhat hack-ish
         // however, the inner text should be aligned to left
         #align(left)[
             #[
                 #set ref(supplement: it => [#meta #extra #adposition])
-                *#ref(label(target)) (#target.split(":").at(-1).replace("_", " ")) #h(1pt)*
+                *#ref(label(target)) (#alter) #h(1pt)*
             ]
             _
                 #content
@@ -63,9 +71,11 @@
     ]]
 ]
 
-#let proof(name, extra: none, breakable: true, content) = attach-to("Proof", "of", name, extra, breakable, content)
+#let proof(name, extra: none, breakable: true, alter: none,  content) = attach-box("Proof", "of", name, extra, alter, breakable, content)
 
-#let comment(name, extra: none, breakable: true, content) = attach-to("Comment", "on", name, extra, breakable, content)
+#let comment(name, extra: none, breakable: true, alter: none,  content) = attach-box("Comment", "on", name, extra, alter, breakable, content)
+
+#let collary(name, extra: none, breakable: true, alter: none, content) = attach-box("Collary", "of", name, extra, alter, breakable, content)
 
 #let illustration(name, breakable: false, content) = theorem-box("Figure", name, center, breakable, content)
 
