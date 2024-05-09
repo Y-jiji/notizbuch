@@ -1,7 +1,6 @@
 #import "template-attributes.typ": *
 #import "@preview/xarrow:0.3.0": xarrow
 
-#let dd = math.upright("d")
 #let pp = math.partial
 #let sp = math.display(" ")
 

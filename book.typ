@@ -1,4 +1,6 @@
 #include "book-cover.typ"
 #include "subject-mathematics.typ"
 #include "subject-engineering.typ"
-#include "project-neujit.typ"
+#include "project-build-tensor-compiler.typ"
+#include "project-build-music-dsl.typ"
+#include "project-build-rear-leg.typ"

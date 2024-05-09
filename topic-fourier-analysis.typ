@@ -21,7 +21,7 @@ In physics, simple harmonic motion provides a model for a vibrating spring.
     A simple harmonic motion $"SimpleHM"(y,k)$ is defined by a following equation:
     $
     bold("equation") #h(10pt) 
-        &frac(dd^2 y, dd t^2)(t) + k^2 y(t) =0\
+        &frac(dif^2 y, dif t^2)(t) + k^2 y(t) =0\
     bold("where") #h(10pt) 
         &k: RR^+, y: RR -> RR , \ 
         &y "is twice differentiable"
@@ -38,22 +38,22 @@ In physics, simple harmonic motion provides a model for a vibrating spring.
 #proof("Theorem:Solution_to_SimpleHM")[
     Given $"SimpleHM"(y, k)$, we verify: 
     $
-        frac(dd^2 y, dd t^2)(t) = - a k^2 sin(k t) - b k^2 cos(k t)
+        frac(dif^2 y, dif t^2)(t) = - a k^2 sin(k t) - b k^2 cos(k t)
     $
     Then, for a solution $y$, we try to compute $(a,b)$ so that 
     $
         y(t) &= a sin(k t) + b cos(k t)\
-        k^(-1) frac(dd y, dd t)(t) &= a cos(k t) - b sin(k t)
+        k^(-1) frac(dif y, dif t)(t) &= a cos(k t) - b sin(k t)
     $
     We observe that
     $
-        g(t) = cos(k t) dot y(t) - sin(k t) dot  k^(-1) frac(dd y, dd t)(t)\
-        frac(dd g, dd t)(t) = 0
+        g(t) = cos(k t) dot y(t) - sin(k t) dot  k^(-1) frac(dif y, dif t)(t)\
+        frac(dif g, dif t)(t) = 0
     $
     By analogy
     $
         h(t) = sin(k t) dot y (t) + cos(k t) dot k^(-1) frac(d y, d t)(t)\
-        frac(dd h, dd t)(t) = 0
+        frac(dif h, dif t)(t) = 0
     $
     Let $b = g(t)$ and $a = h(t)$, since $y(t) = h(t) dot sin(k t) + g(t) dot cos(k t)$. We have
     $
@@ -198,13 +198,13 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     #TODO[definition of $T$-periodic function]
     $
         v(x) = cases(
-            & display(1/2 f(x) -1/2 integral_0^x c^(-1)g(x^*) dd x^*) 
+            & display(1/2 f(x) -1/2 integral_0^x c^(-1)g(x^*) dif x^*) 
                 & "where" x in [0,pi]\
             & -w(2pi - t)
                 & "where" x in (pi, 2pi)\
         )\
         w(x) = cases(
-            & display(1/2 f(x) +1/2 integral_0^x c^(-1)g(x^*) dd x^*)
+            & display(1/2 f(x) +1/2 integral_0^x c^(-1)g(x^*) dif x^*)
                 & "where" x in [0, pi]\
             & -v(2pi -t)
                 & "where" x in (pi, 2pi)
@@ -229,7 +229,7 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     $
         frac(pp hat(u), pp xi)(xi, zeta) = frac(pp hat(u), pp xi)(xi, 0)\
         hat(u)(xi, zeta)
-        = integral_(xi^*=0)^(xi) frac(pp hat(u), pp xi^*)(xi^*, zeta) dd xi^* 
+        = integral_(xi^*=0)^(xi) frac(pp hat(u), pp xi^*)(xi^*, zeta) dif xi^* 
             + hat(u)(0, zeta)
         = hat(u)(xi,0)
             + hat(u)(0,zeta)
@@ -251,8 +251,8 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     $
     Therefore, when $forall x in [0, pi]$
     $
-        v(x) = 1/2 f(x) -1/2 integral_0^x c^(-1)g(x^*) dd x^* - C\
-        w(x) = 1/2 f(x) +1/2 integral_0^x c^(-1)g(x^*) dd x^* + C
+        v(x) = 1/2 f(x) -1/2 integral_0^x c^(-1)g(x^*) dif x^* - C\
+        w(x) = 1/2 f(x) +1/2 integral_0^x c^(-1)g(x^*) dif x^* + C
     $
     Apply boundary conditions $u(pi, t) = u(0, t) = 0$, we find that $forall t in RR^+$
     $
@@ -266,8 +266,8 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     Therefore, $w$ are $2 pi$-periodic on $RR^+$, which also means $v$ is $2pi$-periodic on $RR$. 
     For $t in [pi, 2pi]$:
     $
-        w(t)=-v(2 pi - t) = -1/2 f(2pi -t) + 1/2 integral_0^(2pi -t) c^(-1)g(x^*) dd x^* + C\
-        v(t)=-w(2 pi - t) = -1/2 f(2pi -t) - 1/2 integral_0^(2pi -t) c^(-1)g(x^*) dd x^* - C
+        w(t)=-v(2 pi - t) = -1/2 f(2pi -t) + 1/2 integral_0^(2pi -t) c^(-1)g(x^*) dif x^* + C\
+        v(t)=-w(2 pi - t) = -1/2 f(2pi -t) - 1/2 integral_0^(2pi -t) c^(-1)g(x^*) dif x^* - C
     $
 ]
 
@@ -277,8 +277,8 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     This gives us $exists lambda<0:$
     $
         cases(
-            display(phi(z) - lambda frac(dd^2 phi, dd x^2)(z) = 0)\
-            display(psi(z) - frac(lambda, c^2) frac(dd^2 psi, dd x^2)(z) = 0)
+            display(phi(z) - lambda frac(dif^2 phi, dif x^2)(z) = 0)\
+            display(psi(z) - frac(lambda, c^2) frac(dif^2 psi, dif x^2)(z) = 0)
         )
     $
     Here we must have $lambda < 0$, or otherwise it gives the trivial solution or a divergent solution over time, which violates the condition that $u$ is bounded. \
@@ -308,7 +308,7 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
 
 While in @Heading-L3:Mechanical_Wave, we demonstrated how to solve differential equations with standing waves in @Proof-A:Theorem:Solution_to_MechanicalW and seperation of variables in @Proof-B:Theorem:Solution_to_MechanicalW, the method of standing waves are not applicable to many other differentiale equations. In this section, we introduce another physical problem: heat flow, and we will see that heat flow can be solved with seperation of variables. 
 
-The thermal energy on a plate changes with time. Let's first suppose the plate is divided into small grids and inside seach grid, heat is transported instantly. Therefore, each grid internally have uniform temperature. 
+The thermal energy on a plate changes with time. Let's first suppose the plate is divided into small grids and inside seach grid, heat is transported instantly. Therefore, each grid internally have uniform temperature, as shown in @Figure:Heat_Flow_on_a_Plate. 
 
 According to Newton's law of cooling, the adjacent tiles results in the following equation:
 $
@@ -348,8 +348,8 @@ On the left hand side, $kappa h^2 u(x_n,y_n,t)$ is the thermal energy on a squar
         #jp(50%, -250%/3,   [$u(x_n,y_(n-1),t)$])
         #jp(250%/3, -50%,   [$u(x_(n+1),y_n,t)$])
         #jp(50%/3, -50%,    [$u(x_(n-1),y_n,t)$])
-        #jp(100% + 5pt, -250%/3, [#cg(r9($overbracket(d4 d4 d4 d4 d4 d4,h)$))])
-        #jp(250%/3, -100% - 5pt, [#cg($overbracket(d4 d4 d4 d4 d4 d4,h)$)])
+        #jp(100% + 5pt, -250%/3, [#cg(r9($overbrace(d4 d4 d4 d4 d4 d4,h)$))])
+        #jp(250%/3, -100% - 5pt, [#cg($overbrace(d4 d4 d4 d4 d4 d4,h)$)])
     ]
 ]
 
@@ -429,18 +429,18 @@ Write $x_(n+m)$ as $x_(n)+ m h$ and $y_(n+m)$ as $y_(n) + m h$, mimicing @Headin
 Fourier series is defined for functions with bounded domain. 
 
 #definition("Fourier Coefficient")[
-    For a function $f: [a, b] -> RR$ where $f(a) = f(b)$. 
+    For a function $f: [a, b] -> RR$ . 
     Its $n$-th Fourier coefficient $hat(f) = "FourierCoeff"(f): ZZ -> CC$ is defined as:
     $
-        &hat(f)(n) = frac(1,b-a) integral_a^b f(x) exp(-2pi i n x slash L) sp dd x\
+        &hat(f)(n) = frac(1,b-a) integral_a^b f(x) exp(-2pi i n x slash L) sp dif x\
         &"where" i "is the imaginary unit"\
         &"where" L "is" b - a
     $
 ]
 
 #definition("Fourier Series")[
-    For a function $f: [a, b] -> RR$ where $f(a) = f(b)$. 
-    Its $n$-th partial sum in Fourier series $tilde(f) = "FourierS"(f): NN -> CC$ is defined as:
+    For a function $f: [a, b] -> RR$ . 
+    Its $n$-th partial sum in Fourier series $tilde(f) = "FourierS"(f): NN -> [a, b] -> CC$ is defined as:
     $
         &tilde(f)(n)(x) = sum_(m=-n)^n hat(f)(n)(x) exp(2 pi i m x slash L)\
         &"where" i "is the imaginary unit"\
@@ -449,10 +449,45 @@ Fourier series is defined for functions with bounded domain.
     $
 ]
 
-It is natural to ask if Fourier series converges to the original function, and if Fourier coefficients give a unique description of a function. 
+It is natural to ask if Fourier series converges to the original function, and if Fourier coefficients give a unique description of a function. But from a technical point of view, we know that changes on a finite set of points will not be reflected in Fourier coefficients, so we may have to work on a weaker one. 
+
+#theorem("Weak Convergence of FourierS")[
+    If $f: [a, b] -> RR$ is a Riemann integrable function, then for any $x$ where $f$ is continuous at $x$: 
+    $
+       &lim_(n -> infinity) tilde(f)(n)(x) = f(x) \
+       &"where" tilde(f) "represents" "FourierS"(f)
+    $
+]
+
+#proof("Theorem:Weak_Convergence_of_FourierS")[
+    Let $hat(f)$ be the Fourier coefficients of $f$, and set $L=b-a$. 
+    We also define:
+    $
+        f^(\\)(n)(x) = f(x) - sum_(m=-n)^n hat(f)(n) exp(2 pi i m x slash L)
+    $
+    Now we want to prove $display(lim_(n -> infinity) f^(\\)(n)(x) = 0)$ where $f$ is continuous at $x$. 
+    Since $f$ is continous at $x$, so is $f^(\\)(n)$. 
+    For each given $epsilon$, there must exists $delta$ such that 
+    $
+        forall x^* in (x-delta, x+delta): 
+            |f^(\\)(n)(x^*) - f^(\\)(n)(x)| < epsilon
+    $
+    For any given $n$, we can pick an $display(epsilon(n) = 1/2|f^(\\)(n)(x)|)$ to acquire a single-signed short interval. 
+    However, for any $n$, the following integral must be $0$ 
+    $
+        lim_(n->infinity) integral_a^b (zeta + cos((2pi(x-a))/(b-a)))^m f^(\\)(n)(x) dif x = 0
+    $
+]
+
+#theorem("Convergence of Trigonometric Series")[
+    For a function $f: [a, b] -> RR$ , if $f$ is square Lebesgue integrable, then except for a set $E$ of measure zero, 
+    $
+        forall x in [a,b] backslash E: lim_(n -> infinity) tilde(f)(n)(x) = f(x)
+    $
+]
 
 #theorem("Convergence of FourierS")[
-    For a function $f: [a, b] -> RR$ where $f(a) = f(b)$, if $f$ is square Lebesgue integrable, then except for a set $E$ of measure zero, 
+    For a function $f: [a, b] -> RR$ , if $f$ is square Lebesgue integrable, then except for a set $E$ of measure zero, 
     $
         forall x in [a,b] backslash E: lim_(n -> infinity) tilde(f)(n)(x) = f(x)
     $
@@ -463,17 +498,11 @@ It is natural to ask if Fourier series converges to the original function, and i
 #collary("Theorem:Convergence_of_FourierS", alter: "Uniqueness of FourierS")[
     If functions $f$ and $g$ on $[a,b] -> RR$ have the same Fourier coefficients, then except for a set $E$ of measure zero,
     $
-        forall x in [a,b] backslash E: f(x) =g(x)
+        forall x in [a,b] backslash E: f(x) = g(x)
     $
 ]
 
-#theorem("Weaker Convergence of FourierS")[
-    For a Riemann integrable function, $f$ 
-]
-
 === Convolutions
-
-
 
 === Good Kernels
 

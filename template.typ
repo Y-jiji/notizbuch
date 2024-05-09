@@ -2,6 +2,7 @@
 #import "template-summary.typ": *
 #import "template-attributes.typ": *
 #import "template-evagelion.typ": *
+#import "template-algorithm.typ": *
 
 #let setup(kind) = doc => context [
     // use heading

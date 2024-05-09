@@ -3,7 +3,7 @@
 
 = Formal Languages & Automata
 
-== Regular Languages
+== Regular Languages <Heading-L2:Regular_Langauges>
 
 === Finite State Automata
 

@@ -1,7 +1,7 @@
 #import "template.typ": *
 #show: setup("Project")
 
-= Neujit
+= Build a Smarter Tensor Compiler
 
 #summary[
     Neujit is a project trying to build a jit compiler for tensor computation workloads backed by WebGPU. While there are many tensor compilers, neujit    tries to find a smarter way to minimize the need of writing custom kernels. 
