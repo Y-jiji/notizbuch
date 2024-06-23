@@ -1,10 +1,10 @@
 #import "template.typ": *
-#show: setup("Project")
+#show: setup
 
 = Build a Smarter Tensor Compiler
 
 #summary[
-    Neujit is a project trying to build a jit compiler for tensor computation workloads backed by WebGPU. While there are many tensor compilers, neujit    tries to find a smarter way to minimize the need of writing custom kernels. 
+    Neujit is a topic trying to build a jit compiler for tensor computation workloads backed by WebGPU. While there are many tensor compilers, neujit    tries to find a smarter way to minimize the need of writing custom kernels. 
 ]
 
 == Input
@@ -23,7 +23,7 @@ The interference graph represents how data co-exists at the same time so that th
 
 Workgroup memory can be utilized when and only when computation is happening locally inside workgroups. Therefore, we can just provide some workgroup-local operators and let the compiler to use them. 
 
-Now the problem is how to decompose higher-level operators into a combination of workgroup-local operators. For example, everyone knows that a matrix multiplication can be written as a tiled matrix multiplication, but it is always harder and error-prone way. Besides, the compiler needs extra aid to make sure it will not be "intimidiated" from intermediate steps. It can be helpful to warp the matrix evaluation order. 
+Now the problem is how to decompose higher-level operators into a combination of workgroup-local operators. For eg, everyone knows that a matrix multiplication can be written as a tiled matrix multiplication, but it is always harder and error-prone way. Besides, the compiler needs extra aid to make sure it will not be "intimidiated" from intermediate steps. It can be helpful to warp the matrix evaluation order. 
 
 $
     "all-map"(i,k: "all-reduce"(j: A[i,j] dot B[j,k]))

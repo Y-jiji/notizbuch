@@ -4,7 +4,21 @@
 #import "template-evagelion.typ": *
 #import "template-algorithm.typ": *
 
-#let setup(kind) = doc => context [
+#let setup = doc => [
+    // set fg and bg color
+    #set page(fill: bg-color)
+    #set text(fill: fg-color)
+    // page numbering
+    #set page(footer: context [
+        #set align(center)
+        #set text(8pt)
+        #counter(page).display(
+            "1 of 1",
+            both: true,
+        )
+    ])
+    // set a slightly larger margin
+    #set page(margin: (x: 8em))
     // use heading
     #set heading(numbering: "I/1.1.")
     #set par(linebreaks: "optimized")
@@ -48,7 +62,7 @@
             ]
             else [
                 #pagebreak()
-                #kind 
+                Topic
                 #counter(heading).display() #it.body
             ]
         )

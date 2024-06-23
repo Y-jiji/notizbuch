@@ -1,8 +1,9 @@
 #import "template.typ": *
-#show: setup("Topic")
+#show: setup
 
 = Ordinary Differential Equations
 
 == Linear Differential Equations
 
-== 
+== Techniques for Solving ODE
+

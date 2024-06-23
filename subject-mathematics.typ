@@ -1,5 +1,5 @@
 #import "template.typ": *
-#show: setup("Topic")
+#show: setup
 
 #build-eva-variant-0(595.28pt-5cm, 841.89pt-5cm, 2.5cm, 2.5cm, "Mathematical", "Analysis", "解析", "か", "いせき")
 #include "topic-fourier-analysis.typ"
@@ -11,10 +11,5 @@
 #include "topic-finite-linear-space.typ"
 
 #pagebreak()
-#context build-eva-variant-0((595.28pt-5cm).to-absolute(), (841.89pt-5cm).to-absolute(), 2.5cm, 2.5cm, "Theoretical", "Computer", "理論", "計算", "機科学")
+#context build-eva-variant-0((595.28pt-5cm).to-absolute(), (841.89pt-5cm).to-absolute(), 2.5cm, 2.5cm, [Computing], [Theory], "計算", "", "理論")
 #include "topic-formal-languages.typ"
-
-#pagebreak()
-#context build-eva-variant-0((595.28pt-5cm).to-absolute(), (841.89pt-5cm).to-absolute(), 2.5cm, 2.5cm, "Contemplated", "Math", "数学", "反省", "はんせい")
-#include "topic-soft-and-hard-math.typ"
-

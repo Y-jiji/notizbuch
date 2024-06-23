@@ -1,9 +1,12 @@
 #import "template.typ": *
-#show: setup("Topic")
+#show: setup
 
-= Formal Languages & Automata
+= Formal Languages
 
-== Regular Languages <Heading-L2:Regular_Langauges>
+== Pattern Matching & Deduction
 
-=== Finite State Automata
+=== 
 
+== Deductive & Admissive
+
+=== 

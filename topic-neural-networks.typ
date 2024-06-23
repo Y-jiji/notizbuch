@@ -1,5 +1,5 @@
 #import "template.typ": *
-#show: setup("Topic")
+#show: setup
 
 = AI System
 

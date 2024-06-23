@@ -1,5 +1,5 @@
 #import "template.typ": *
-#show: setup("Project")
+#show: setup
 
 = DSL for Digital Audio Processing
 
@@ -16,4 +16,6 @@ This mainly roots in two sources:
 To solve this problem, I want to design a programming language that eventually describes a stream of sound, and can be computed incrementally both between editing changes and temporal changes, while providing parsimonous memory usages by offloading stuff to disk.
 
 == Declarative State Manipulation
+
+#TODO[Introducing ODE as state manipulation method, time as predefined free variable]
 
