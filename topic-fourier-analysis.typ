@@ -17,49 +17,46 @@ The simplist possible equation of this type is simple harmonic motion.
 
 In physics, simple harmonic motion provides a model for a vibrating spring. 
 
-#def("Simple Harmonic Motion")[
-    A simple harmonic motion $"SimpleHM"(y,k)$ is defined by a following equation:
-    $
-    bold("equation") #h(10pt)
-        &frac(dif^2 y, dif t^2)(t) + k^2 y(t) =0\
-    bold("where") #h(10pt) 
-        &k: RR^+, y: RR -> RR , \ 
-        &y "is twice differentiable"
-    $
-]
+#def("Simple Harmonic Motion")[]
+A simple harmonic motion $"SimpleHM"(y,k)$ is defined by a following equation:
+$
+bold("equation") #h(10pt)
+    &frac(dif^2 y, dif t^2)(t) + k^2 y(t) =0\
+bold("where") #h(10pt) 
+    &k: RR^+, y: RR -> RR , \ 
+    &y "is twice differentiable"
+$
 
-#thm("Solution to SimpleHM")[
-    The solutions to simple harmonic motion $"SimpleHM"(y, k)$ is: 
-    $
-    \{y: exists a,b in RR: y(t) = a sin(k t) + b cos(k t) \}
-    $
-]
+#thm("Solution to SimpleHM")[]
+The solutions to simple harmonic motion $"SimpleHM"(y, k)$ is: 
+$
+\{y: exists a,b in RR: y(t) = a sin(k t) + b cos(k t) \}
+$
 
-#prf("T:Solution_to_SimpleHM")[
-    Given $"SimpleHM"(y, k)$, we verify: 
-    $
-        frac(dif^2 y, dif t^2)(t) = - a k^2 sin(k t) - b k^2 cos(k t)
-    $
-    Then, for a solution $y$, we try to compute $(a,b)$ so that 
-    $
-        y(t) &= a sin(k t) + b cos(k t)\
-        k^(-1) frac(dif y, dif t)(t) &= a cos(k t) - b sin(k t)
-    $
-    We observe that
-    $
-        g(t) = cos(k t) dot y(t) - sin(k t) dot  k^(-1) frac(dif y, dif t)(t)\
-        frac(dif g, dif t)(t) = 0
-    $
-    By analogy
-    $
-        h(t) = sin(k t) dot y (t) + cos(k t) dot k^(-1) frac(d y, d t)(t)\
-        frac(dif h, dif t)(t) = 0
-    $
-    Let $b = g(t)$ and $a = h(t)$, since $y(t) = h(t) dot sin(k t) + g(t) dot cos(k t)$. We have
-    $
-        y(t) = a dot sin(k t) + b dot cos(k t)
-    $
-]
+#prf("T:Solution_to_SimpleHM")[]
+Given $"SimpleHM"(y, k)$, we verify: 
+$
+    frac(dif^2 y, dif t^2)(t) = - a k^2 sin(k t) - b k^2 cos(k t)
+$
+Then, for a solution $y$, we try to compute $(a,b)$ so that 
+$
+    y(t) &= a sin(k t) + b cos(k t)\
+    k^(-1) frac(dif y, dif t)(t) &= a cos(k t) - b sin(k t)
+$
+We observe that
+$
+    g(t) = cos(k t) dot y(t) - sin(k t) dot  k^(-1) frac(dif y, dif t)(t)\
+    frac(dif g, dif t)(t) = 0
+$
+By analogy
+$
+    h(t) = sin(k t) dot y (t) + cos(k t) dot k^(-1) frac(d y, d t)(t)\
+    frac(dif h, dif t)(t) = 0
+$
+Let $b = g(t)$ and $a = h(t)$, since $y(t) = h(t) dot sin(k t) + g(t) dot cos(k t)$. We have
+$
+    y(t) = a dot sin(k t) + b dot cos(k t)
+$
 
 === Mechanical Wave <H-L3:Mechanical_Wave>
 
@@ -78,7 +75,8 @@ This model originates from a multi-particle system:
 + Each particle is affected only by its neighbouring particles. Vertical component of the force given by $y_(j+1)$ to $y_(j)$ is $h^(-1)k(y_(j+1) - y_(j))$ . 
 + Each particle has weight $rho h$ (when we vary $h$, the total weight of this particle string don't change)
 
-#fig("Vibrating Particles on Tracks")[
+#fig("Vibrating Particles on Tracks")[]
+[
     // picture size
     #let width  = 10cm;
     #let height = 5cm;
@@ -196,7 +194,7 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
 
 #thm("Solution to MechanicalW")[
     Solution to $"MechanicalW"(u, c, f, g)$ can be written as $u(x,t)=v(x - c t) + w(x + c t)$ , where $v$ and $w$ are $2 pi$-periodic functions. 
-    #TODO[def of $T$-periodic function]
+    #todo[def of $T$-periodic function]
     $
         v(x) = cases(
             & display(1/2 f(x) -1/2 integral_0^x c^(-1)g(x^*) dif x^*) 
@@ -298,7 +296,7 @@ When $h -> 0^+$ and let $c = sqrt(rho slash k)$, the last equation turns into:
     $
         u(x,t)=sin(m x)dot cos(m c(t-theta))
     $
-    #TODO[Uniqueness of solution given by Fourier Series]
+    #todo[Uniqueness of solution given by Fourier Series]
 ]
 
 #rmk("P-B:T:Solution_to_MechanicalW")[
@@ -365,7 +363,7 @@ Write $x_(n+m)$ as $x_(n)+ m h$ and $y_(n+m)$ as $y_(n) + m h$, mimicing @H-L3:M
         bold("where") #h(10pt)
         & u:RR^3 -> RR
     $
-    #TODO("Boundary Conditions")
+    #todo("Boundary Conditions")
 ]
 
 === Miscellaneous & Exercises
@@ -420,7 +418,7 @@ $
     $
 ]
 
-#TODO[Clean up the exercises]
+#todo[Clean up the exercises]
 
 == Fourier Series
 
@@ -463,7 +461,7 @@ It is natural to ask if Fourier series converges to the original function, and i
     $
     Using integration by parts:
     $
-        hat(f)(n) = (2pi)^(-1) #TODO[...]
+        hat(f)(n) = (2pi)^(-1) #todo[...]
     $
 ]
 
@@ -493,7 +491,7 @@ It is natural to ask if Fourier series converges to the original function, and i
     $
         lim_(n->infinity) integral_a^b (zeta + cos((2pi(x-a))/(b-a)))^m f^(\\)(n)(x) dif x = 0
     $
-    #TODO[Finish this prf]
+    #todo[Finish this prf]
 ]
 
 #thm("Convergence of Trigonometric Series")[
@@ -508,8 +506,8 @@ It is natural to ask if Fourier series converges to the original function, and i
     $
         forall x in [a,b] backslash E: lim_(n -> infinity) tilde(f)(n)(x) = f(x)
     $
-    #TODO[D of square Lebesgue integrable]
-    #TODO[P of this theorem]
+    #todo[D of square Lebesgue integrable]
+    #todo[P of this theorem]
 ]
 
 #col("T:Convergence_of_FourierS", alter: "Uniqueness of FourierS")[

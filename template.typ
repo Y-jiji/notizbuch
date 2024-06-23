@@ -1,13 +1,15 @@
-#import "template-theorem.typ": *
+#import "template-tag.typ": *
 #import "template-summary.typ": *
 #import "template-attributes.typ": *
 #import "template-evagelion.typ": *
 #import "template-algorithm.typ": *
+#import "template-commute.typ": *
 
 #let setup = doc => [
     // set fg and bg color
     #set page(fill: bg-color)
     #set text(fill: fg-color)
+    #set line(stroke: fg-color)
     // page numbering
     #set page(footer: context [
         #set align(center)
@@ -18,7 +20,7 @@
         )
     ])
     // set a slightly larger margin
-    #set page(margin: (x: 8em))
+    #set page(margin: (x: 14%))
     // use heading
     #set heading(numbering: "I/1.1.")
     #set par(linebreaks: "optimized")
@@ -36,6 +38,8 @@
     #show emph: it => {
         text(font: font-italic, style: "italic", it.body)
     }
+    // 
+    #show ref: it => strong([#it])
     // bold font
     #show strong: it => {
         text(font: font-bold, weight: "bold", it.body)
@@ -62,8 +66,7 @@
             ]
             else [
                 #pagebreak()
-                Topic
-                #counter(heading).display() #it.body
+                Chapter #counter(heading).display() #it.body
             ]
         )
         v(0.5em)
