@@ -2,7 +2,15 @@
 
 // display todo collector
 #show: setup
-#context text(green)[#todo-collector.final().map(it => [\[TODO: #ref(it.at(1)) #it.at(0)\]]).join("\n")]
+#context {
+    [TODO:]
+    let map = it => ([#ref(it.at(1))], [#it.at(0)]);
+    table(
+        columns: 2, 
+        stroke: none,
+        ..todo-collector.final().map(map).flatten()
+    )
+}
 
 #include "subject-mathematics.typ"
 #include "subject-engineering.typ"

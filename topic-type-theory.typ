@@ -28,7 +28,24 @@ record Category {o l e : Level} : Type (lsuc (o ⊔ l ⊔ e)) where field
 
 #tag[cat:notation] In the context of category theory, we use upper case $frak("FRAK")$ for functors, upper case $cal("CAL")$ for categories, normal lower case for morphisms, and normal upper case for objects. 
 
-#todo[Also define functors. ]
+#tag[cat:opposite] An opposite category $cal(C^"op")$ of category $cal(C)$ is a category where each morphism is reversed. 
+$
+    "obj"_cal(C^"op") = "obj"_cal(C)\
+    "hom"_cal(C^"op")(X,Y) = "hom"_cal(C)(Y, X)
+$
+
+#tag[cat:functor] A functor $frak(F)$ between category $cal(C)$ and category $cal(D)$ maps both objects and morphisms from $cal(C)$ to $cal(D)$. And keep the relation between objects and morphisms:
+$
+    forall { X sp Y : "obj"_cal(C) } sp
+    forall { f: hom_cal(C)(X,Y) } sp 
+        frak(F)(f):hom_cal(D)(X,Y)\
+    forall { f sp g : hom_cal(D)(bullet, bullet)} sp
+        frak(F)(f compose g) = frak(F)(f) compose frak(F)(g)
+$
+
+#tag[cat:functor:notation] In @cat:functor, we write ${f sp g :hom_cal(D)(bullet, bullet)}$ to denote $f$ and $g$ can be any morphism that satisfy the prequisites of composition, i.e. when for some ${X sp Y}$ we have $g: hom_cal(C)(X,Y)$ then we must have $f: hom_cal(C)(Y,Z)$ .  
+
+#tag[cat:functor:contra-variant] For @cat:functor, mathematicians sometimes call functor $frak(F) : cal(C^"op") -> cal(D)$ "contra-variant functor from $cal(C)$ to $cal(D)$". This is a matter of convenience and convention. 
 
 ===  Categorical Limits
 
@@ -103,6 +120,25 @@ $
     arr("A"  , "B", $g$,          label-pos: left, "dashed"),
     arr("FX", "FY", $frak(F)(f)$, label-pos: right),
 )]
+
+== Geometry of Categories
+
+#tag[cat:delta-category] $cal(Delta)$-category is a category whose objects $"obj"_Delta$ are natural numbers and morphisms $hom_(cal(Delta))(n,m)$ are order-preserving functions from $[0 dots n] -> [0 dots m]$ .  
+
+#tag[cat:simplicial-set] A simplicial set is a contra-variant functor $frak(K)$ (see @cat:functor:contra-variant) from $cal(Delta)$-category (as in @cat:delta-category) to $cal("Set")$-category, i.e. $frak(K) : cal(Delta^"op") -> cal("Set")$ . 
+
+#tag[cat:simplicial-set:remark] Mind that there are many functors that satisfy the given condition in @cat:simplicial-set. The difference between two simplicial sets depends on how they stick objects together (i.e. map different objects to the same object)
+
+#tag[cat:simplicial-set:structure] For each order-preserving map $f$ mentioned in @cat:delta-category, it can be decomposed into two kinds of maps, called "face map" and "degeneracy maps". 
+The face maps can be written as $f : forall {n: NN} -> hom_(Delta)(n+1, n)$ , which removes an element from 
+#todo[face map and degeneracy map]
+
+#tag[cat:nerve] A nerve of a category $cal(C)$, written as $"nerve"_cal(C)$, is a simplicial set constructed from a (small) category using the following method. 
+
+
+#todo[definition of small category. ]
+
+#todo[defintion of nerve]
 
 == Logic
 
