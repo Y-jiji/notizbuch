@@ -4,6 +4,7 @@
 #import "template-evagelion.typ": *
 #import "template-algorithm.typ": *
 #import "template-commute.typ": *
+#import "template-math.typ": *
 
 #let setup = doc => [
     // set fg and bg color
