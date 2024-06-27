@@ -6,8 +6,7 @@
     [TODO:]
     let map = it => ([#ref(it.at(1))], [#it.at(0)]);
     table(
-        columns: 2, 
-        stroke: none,
+        columns: 2,
         ..todo-collector.final().map(map).flatten()
     )
 }

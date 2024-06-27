@@ -11,6 +11,7 @@
     #set page(fill: bg-color)
     #set text(fill: fg-color)
     #set line(stroke: fg-color)
+    #set table(stroke: none)
     // page numbering
     #set page(footer: context [
         #set align(center)
@@ -31,7 +32,8 @@
         let n = counter(figure).get().last() - counter(figure).at(head).last()
         str(counter(heading).display("I.").split(".").at(0))
         "/"
-        (counter(heading).get().slice(1) + (n,)).map(str).join(".")
+        (counter(heading).get().slice(1)).map(str).join(".")
+        [\-#n]
     })
     // normal font
     #set text(font: font-normal, style: "normal", overhang: false)

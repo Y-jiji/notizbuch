@@ -1,3 +1,5 @@
 {
-    "typst-preview.pinPreviewFile": false
+    "typst-preview.pinPreviewFile": true,
+    "typst-preview.cursorIndicator": true,
+    "typst-preview.showInActivityBar": false
 }
