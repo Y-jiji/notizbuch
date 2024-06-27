@@ -130,12 +130,18 @@ Before we generate machine code, we have to transform the Tree IR so that:
 + Non-control-flow instrus in Tree IR can be directly translated to machine code. 
 + Dividing instrus into basic blocks, where in each basic block there is no control-flow intructions, control-flow graph is aligned to machine code. 
 
-// #tag[compiler:tiger:canon] 
+// #tag[compiler:tiger:canon]
 #todo[Algorithm for Canonicalization]
 
 === Instruction Selection
 
 #tag[compiler:tiger:instru] 
+
+#tag[compiler:tiger:instru:maximal-much] 
+
+#tag[compiler:tiger:instru:dp]
+
+#todo[Maximal Munch and DP]
 
 === Register Allocation
 
@@ -205,9 +211,15 @@ For each given `BB`, if we know `A[BB]`, computing `A[I]` and `B[I]` should be v
         A = LIVENESS(PROCEDURE)
         E = {  }
         for I in PROCEDURE:
-            for X, Y in A[I] × A[I] where X != Y:
-                M = I.IS_MOVE           // a MOVE edge
-                E = E ∪ { (X, Y, M) }
+            A' = A[I]
+            if I.IS_MOVE:
+                for X, Y in R(I) × W(I):
+                    E = E ∪ { (X, Y, true) }
+                    E = E ∪ { (Y, X, true) }
+                A' = A' \ R(I)
+            for X, Y in W(I) × (A' ∪ W(I)) where X != Y:
+                E = E ∪ { (X, Y, false) }
+                E = E ∪ { (Y, X, false) }
         V = { X: none for X in PROCEDURE.VARS }
         for I in PROCEDURE:
             for X, R in I.PREALLOCATED:
@@ -217,6 +229,8 @@ For each given `BB`, if we know `A[BB]`, computing `A[I]` and `B[I]` should be v
         return GRAPH(V, E)
     ```
 ]]
+
+#todo[Fix the build algorithm]
 
 #tag[compiler:tiger:reg:color-or-spill] Using the result of @compiler:tiger:reg:interfere, we can obtain an interference graph. However, for a fixed-size set of registers, assign each variable a register can be a hard task, because coloring graph with a fixed set of colors so that no adjacent nodes have the same color is NP-hard. Instead, we use a simple heuristics: 
 #align(center)[
