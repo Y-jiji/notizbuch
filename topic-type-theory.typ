@@ -34,7 +34,7 @@ $
     "hom"_cal(C^"op")(X,Y) = "hom"_cal(C)(Y, X)
 $
 
-#tag[cat:functor] A functor $frak(F)$ between category $cal(C)$ and category $cal(D)$ maps both objects and morphisms from $cal(C)$ to $cal(D)$. And keep the relation between objects and morphisms:
+#tag[cat:functor] A functor $frak(F): cal(C) => cal(D)$ from category $cal(C)$ to category $cal(D)$ maps both objects and morphisms from $cal(C)$ to $cal(D)$. And keep the relation between objects and morphisms:
 $
     forall { X sp Y : "obj"_cal(C) } sp
     forall { f: hom_cal(C)(X,Y) } sp 
@@ -43,13 +43,13 @@ $
         frak(F)(f compose g) = frak(F)(f) compose frak(F)(g)
 $
 
-#tag[cat:functor:notation] In @cat:functor, we write ${f sp g :hom_cal(D)(bullet, bullet)}$ to denote $f$ and $g$ can be any morphism that satisfy the prequisites of composition, i.e. when for some ${X sp Y}$ we have $g: hom_cal(C)(X,Y)$ then we must have $f: hom_cal(C)(Y,Z)$ .  
+#tag[cat:functor:notation] In @cat:functor, we write ${f sp g :hom_cal(D)(bullet, bullet)}$ to denote $f$ and $g$ can be any morphism that satisfy the prequisites of composition, i.e. when for some ${X sp Y}$ we have $g: hom_cal(C)(X,Y)$ then we must have $f: hom_cal(C)(Y,Z)$ . 
 
-#tag[cat:functor:contra-variant] For @cat:functor, mathematicians sometimes call functor $frak(F) : cal(C^"op") -> cal(D)$ "contra-variant functor from $cal(C)$ to $cal(D)$". This is a matter of convenience and convention. 
+#tag[cat:functor:contra-variant] For @cat:functor, mathematicians sometimes call functor $frak(F) : cal(C^"op") => cal(D)$ "contra-variant functor from $cal(C)$ to $cal(D)$". This is a matter of convenience and convention. 
 
 ===  Categorical Limits
 
-#tag[cat:cone] A cone $(A, phi)$ of a functor $frak(F) : cal(D) -> cal(C)$ is an object $A$ in $cal(C)$ and a family $phi: forall {X : "obj"_(cal(D))} -> hom(A, F(X))$ such that: 
+#tag[cat:cone] A cone $(A, phi)$ of a functor $frak(F) : cal(D) => cal(C)$ is an object $A$ in $cal(C)$ and a family $phi: forall {X : "obj"_(cal(D))} -> hom(A, F(X))$ such that: 
 $
     forall {X sp Y: "obj"_cal(D)} sp 
     forall {f: hom_cal(D)(X,Y)} sp 
@@ -66,7 +66,7 @@ $
     arr("FX", "FY", $frak(F)(f)$, label-pos: right),
 )]
 
-#tag[cat:limit] A categorical *limit* $(A, phi)$ of a functor $frak(F) : cal(D) -> cal(C)$ is a cone of $frak(F)$ such that for any other cone $(B, psi)$ of $frak(F)$ , there always exists a unique morphism $g: hom(A, B)$ such that 
+#tag[cat:limit] A categorical *limit* $(A, phi)$ of a functor $frak(F) : cal(D) => cal(C)$ is a cone of $frak(F)$ such that for any other cone $(B, psi)$ of $frak(F)$ , there always exists a unique morphism $g: hom(A, B)$ such that 
 $
     forall {X: "obj"_cal(C)} sp phi(X) compose g = psi(X)
 $
@@ -85,7 +85,7 @@ $
     arr("FX", "FY", $frak(F)(f)$, label-pos: right),
 )]
 
-#tag[cat:co-cone] A categorical *co-cone* $(A, phi)$ of a functor $frak(F) : cal(D) -> cal(C)$ is an object $A$ in $cal(C)$ and a mapping $phi: forall {X:"obj"_cal(D)} -> hom(F(X), A)$ such that:
+#tag[cat:co-cone] A categorical *co-cone* $(A, phi)$ of a functor $frak(F) : cal(D) => cal(C)$ is an object $A$ in $cal(C)$ and a mapping $phi: forall {X:"obj"_cal(D)} -> hom(F(X), A)$ such that:
 $
     forall {X sp Y: "obj"_cal(D)} sp 
     forall {f: hom_cal(D)(X,Y)} sp 
@@ -102,7 +102,7 @@ $
     arr("FX", "FY", $frak(F)(f)$, label-pos: right),
 )]
 
-#tag[cat:co-limit] A categorical *co-limit* $(A, phi)$ of a functor $frak(F) : cal(D) -> cal(C)$ is a co-cone of $frak(F)$ such that for every co-cone $(B, psi)$ for functor $frak(F)$ there exists a unique morphism $g: hom_cal(C)(B,A)$ such that
+#tag[cat:co-limit] A categorical *co-limit* $(A, phi)$ of a functor $frak(F) : cal(D) => cal(C)$ is a co-cone of $frak(F)$ such that for every co-cone $(B, psi)$ for functor $frak(F)$ there exists a unique morphism $g: hom_cal(C)(B,A)$ such that
 $
     forall {X: "obj"_cal(C)} sp phi(X) = g compose psi(X)
 $
@@ -121,19 +121,25 @@ $
     arr("FX", "FY", $frak(F)(f)$, label-pos: right),
 )]
 
-== Geometry of Categories
+== Topology
 
-#tag[cat:delta-category] $cal(Delta)$-category is a category whose objects $"obj"_Delta$ are natural numbers and morphisms $hom_(cal(Delta))(n,m)$ are order-preserving functions from $[0 dots n] -> [0 dots m]$ .  
+#tag[top:simplex:idea] A simplex can be seen as a generalization of a directed edge, where we may have $n$-vertices instead of just $2$-vertices. We generalize the concept of "direction" between 2 vertices to a permutation of $n$ vertices. An abstract $n$-simplex is defined as $(n+1)$-permutation in $frak(S)_(n+1)$. 
 
-#tag[cat:simplicial-set] A simplicial set is a contra-variant functor $frak(K)$ (see @cat:functor:contra-variant) from $cal(Delta)$-category (as in @cat:delta-category) to $cal("Set")$-category, i.e. $frak(K) : cal(Delta^"op") -> cal("Set")$ . 
+#tag[top:simplicial-set:idea] In @top:simplex:idea, we only defined simplicies as an independent object, but as edges is only interesting in directed graph, we also want to study the "hyper" directed graph consists of simplicies. Therefore, we first specify a set of vertices $V$, and define a simplex as a sequence of vertices. From this point, we only discuss simplices in the context of given vertices. This is structure of (vertices, simplicies) is called simplicial set. 
 
-#tag[cat:simplicial-set:remark] Mind that there are many functors that satisfy the given condition in @cat:simplicial-set. The difference between two simplicial sets depends on how they stick objects together (i.e. map different objects to the same object)
+#tag[top:delta-category:idea] To describe simplicial sets in category theory, we should construct of a free simplicial set. However, vertex set's size can be a problem: a free structure is supposed to be arbitrarily large, but this is usually forbidden in formal languages. Therefore, we choose a workaround that describes simplicies by how they interacts. 
 
-#tag[cat:simplicial-set:structure] For each order-preserving map $f$ mentioned in @cat:delta-category, it can be decomposed into two kinds of maps, called "face map" and "degeneracy maps". 
-The face maps can be written as $f : forall {n: NN} -> hom_(Delta)(n+1, n)$ , which removes an element from 
+#tag[top:delta-category] $cal(Delta)$-category is a category whose objects $"obj"_Delta$ are natural numbers and morphisms $hom_(cal(Delta))(n,m)$ are order-preserving functions from $[0 dots n] -> [0 dots m]$ . 
+
+#tag[top:simplicial-set] A simplicial set is a contra-variant functor $frak(K)$ (see @cat:functor:contra-variant) from $cal(Delta)$-category (as in @top:delta-category) to $cal("Set")$-category, i.e. $frak(K) : cal(Delta^"op") => cal("Set")$ . 
+
+#tag[top:simplicial-set:remark] Mind that there are many functors that satisfy the given condition in @top:simplicial-set. The difference between two simplicial sets depends on how they stick objects together (i.e. map different objects to the same object). 
+
+#tag[top:simplicial-set:structure] For each order-preserving map $f$ mentioned in @top:delta-category, it can be decomposed into two kinds of maps, called "face map" and "degeneracy maps". 
+The face maps can be written as $f : forall {n: NN} => hom_(Delta)(n+1, n)$ , which removes an element from 
 #todo[face map and degeneracy map]
 
-#tag[cat:nerve] A nerve of a category $cal(C)$, written as $"nerve"_cal(C)$, is a simplicial set constructed from a (small) category using the following method. 
+#tag[top:nerve] A nerve of a category $cal(C)$, written as $"nerve"_cal(C)$, is a simplicial set constructed from a (small) category using the following method. 
 
 
 #todo[definition of small category. ]
