@@ -6,7 +6,7 @@
 #import "template-commute.typ": *
 #import "template-math.typ": *
 
-#let setup = doc => [
+#let setup(supplement: [Chapter], doc) = [
     // set fg and bg color
     #set page(fill: bg-color)
     #set text(fill: fg-color)
@@ -53,12 +53,6 @@
     #set list(marker: [#h(0.25em) $bullet$ #h(0.05em)])
     // add style to links
     #show link: underline
-    #set heading(depth : 1, supplement: "Topic")
-    #set heading(depth : 2, supplement: "Section")
-    #set heading(depth : 3, supplement: "Section")
-    #set heading(depth : 4, supplement: "Section")
-    #set heading(depth : 5, supplement: "Section")
-    #set heading(depth : 6, supplement: "Section")
     // add style to headings
     #show heading: it => context {
         set text(size: 1.6em - 0.1em * it.level)
@@ -69,7 +63,7 @@
             ]
             else [
                 #pagebreak()
-                Chapter #counter(heading).display() #it.body
+                #supplement #counter(heading).display() #it.body
             ]
         )
         v(0.5em)

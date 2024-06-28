@@ -3,14 +3,14 @@
 // -- Display TODO Collector -- //
 #{
     show: setup
-    context {
-        [TODO:]
-        let map = it => ([#ref(it.at(1))], [#it.at(0)]);
-        table(
-            columns: 2,
-            ..todo-collector.final().map(map).flatten()
-        )
-    }
+    [TODO:]
+    context table(
+        columns: 2,
+        ..{
+            let map = it => ([#ref(it.at(1))], [#it.at(0)]);
+            todo-collector.final().map(map).flatten()
+        }
+    )
 }
 
 #build-eva-variant-0(595.28pt-5cm, 841.89pt-5cm, 2.5cm, 2.5cm, "Mathematical", "Analysis", "解析", "か", "いせき")
@@ -27,12 +27,12 @@
 
 // -- Engineering -- //
 
-#build-eva-variant-1(595.28pt-5cm, 841.89pt-5cm, 2.5cm, 2.5cm, "Software", "System", "系統", "ソフ", "トウェア")
+#build-eva-variant-1(595.28pt-5cm, 841.89pt-5cm, 2.5cm, 2.5cm, "Engineering", "System", "系", "統", "開発")
 
 #include "topic-arch-and-compilers.typ"
 #include "topic-distributed-computing.typ"
 
-#build-eva-variant-1(595.28pt-5cm, 841.89pt-5cm, 2.5cm, 2.5cm, "Intelligence", "Artificial", "AI、", "人", "能知工")
+#build-eva-variant-1(595.28pt-5cm, 841.89pt-5cm, 2.5cm, 2.5cm, "Intelligence", "Artificial", "人", "工", "知能")
 
 #include "topic-neural-networks.typ"
 #include "topic-llm-safety.typ"
@@ -42,9 +42,12 @@
 
 // -- Bibliography -- //
 
+#show: it => setup(supplement: "Appendix", it)
+
+= References
 #bibliography(
     "references.bib", 
     full: true,
-    title: "References", 
+    title: none, 
     style: "ieee"
 )

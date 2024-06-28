@@ -5,8 +5,19 @@
 #let fg-color = rgb("#cccccc")
 // #let bg-color = rgb("#ffffff")
 // #let fg-color = rgb("#000000")
-#let font-bold   = ("EB Garamond", "Noto Serif CJK")
-#let font-italic = ("Linux Libertine", "Noto Serif CJK")
-#let font-normal = ("palatino", "Noto Serif CJK")
+#let font-bold   = (
+  "EB Garamond", 
+  "Noto Serif CJK", 
+  "FOT-Matisse Pro"
+)
+#let font-italic = (
+  "Linux Libertine", 
+  "Noto Serif CJK", 
+  "Kochi Mincho"
+)
+#let font-normal = (
+  "Palatino Linotype", 
+  "Noto Serif CJK", 
+  "Kochi Mincho"
+)
 #let box-stroke = (paint: red, thickness: 0.8pt, dash: "dashed")
-#let font-japanese = ("FOT-Matisse Pro")
