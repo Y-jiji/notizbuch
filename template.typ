@@ -1,13 +1,17 @@
-#import "template-theorem.typ": *
+#import "template-tag.typ": *
 #import "template-summary.typ": *
 #import "template-attributes.typ": *
 #import "template-evagelion.typ": *
 #import "template-algorithm.typ": *
+#import "template-commute.typ": *
+#import "template-math.typ": *
 
 #let setup = doc => [
     // set fg and bg color
     #set page(fill: bg-color)
     #set text(fill: fg-color)
+    #set line(stroke: fg-color)
+    #set table(stroke: none)
     // page numbering
     #set page(footer: context [
         #set align(center)
@@ -18,7 +22,7 @@
         )
     ])
     // set a slightly larger margin
-    #set page(margin: (x: 8em))
+    #set page(margin: (x: 14%))
     // use heading
     #set heading(numbering: "I/1.1.")
     #set par(linebreaks: "optimized")
@@ -28,7 +32,8 @@
         let n = counter(figure).get().last() - counter(figure).at(head).last()
         str(counter(heading).display("I.").split(".").at(0))
         "/"
-        (counter(heading).get().slice(1) + (n,)).map(str).join(".")
+        (counter(heading).get().slice(1)).map(str).join(".")
+        [\-#n]
     })
     // normal font
     #set text(font: font-normal, style: "normal", overhang: false)
@@ -36,6 +41,8 @@
     #show emph: it => {
         text(font: font-italic, style: "italic", it.body)
     }
+    // 
+    #show ref: it => strong([#it])
     // bold font
     #show strong: it => {
         text(font: font-bold, weight: "bold", it.body)
@@ -62,8 +69,7 @@
             ]
             else [
                 #pagebreak()
-                Topic
-                #counter(heading).display() #it.body
+                Chapter #counter(heading).display() #it.body
             ]
         )
         v(0.5em)

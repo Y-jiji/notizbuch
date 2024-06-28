@@ -17,5 +17,5 @@ To solve this problem, I want to design a programming language that eventually d
 
 == Declarative State Manipulation
 
-#TODO[Introducing ODE as state manipulation method, time as predefined free variable]
+#todo[Introducing ODE as state manipulation method, time as predefined free variable]
 
