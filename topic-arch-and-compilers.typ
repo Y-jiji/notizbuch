@@ -1,5 +1,5 @@
 #import "template.typ": *
-#show: setup
+#show: with-setup
 
 = Compilers & Architectures <compiler>
 
@@ -21,7 +21,7 @@ frac(
 )
 $
 
-#todo[Link transition system, star over arrow means evaluation]
+#task[Link transition system, star over arrow means evaluation]
 
 == Tiger Compiler
 
@@ -72,16 +72,16 @@ Another notable feature is that as $sans("var"("Exp"; "Bnd"."Cmd"))$ defines the
 #tag[compiler:tiger:notation] In @compiler:tiger:syntax, we use overline to represent "a vector of". For example, $sans(overline("Exp"))$ means a vector of expressions. In engineering, representation like @compiler:tiger:syntax is generated after name resolution. 
 
 #tag[compiler:tiger:statics] We introduce two judgements in the statics (as in @Book:PFPL).
-#todo[The rule of typing and command ok]
+#task[The rule of typing and command ok]
 
 #tag[compiler:tiger:dynamics] The dynamics of this language is more complicated then some practical programming languages, as it has mutable states. 
-#todo[The rule of evaluation]
+#task[The rule of evaluation]
 
 === Tree IR Formalized
 
 #tag[compiler:tiger:treeir] Tree IR is "featureless" a limited language. Compared to prevailing intermediate representations, like LLVM IR or Cranelift IR, Tree IR is not a static-single assignment language. 
 
-#todo[Tree IR]
+#task[Tree IR]
 
 === Tree IR Generation
 
@@ -131,7 +131,7 @@ Before we generate machine code, we have to transform the Tree IR so that:
 + Dividing instrus into basic blocks, where in each basic block there is no control-flow intructions, control-flow graph is aligned to machine code. 
 
 // #tag[compiler:tiger:canon]
-#todo[Algorithm for Canonicalization]
+#task[Algorithm for Canonicalization]
 
 === Instruction Selection
 
@@ -141,7 +141,7 @@ Before we generate machine code, we have to transform the Tree IR so that:
 
 #tag[compiler:tiger:instru:dp]
 
-#todo[Maximal Munch and DP]
+#task[Maximal Munch and DP]
 
 === Register Allocation
 
@@ -230,7 +230,7 @@ For each given `BB`, if we know `A[BB]`, computing `A[I]` and `B[I]` should be v
     ```
 ]]
 
-#todo[Fix the build algorithm]
+#task[Fix the build algorithm]
 
 #tag[compiler:tiger:reg:color-or-spill] Using the result of @compiler:tiger:reg:interfere, we can obtain an interference graph. However, for a fixed-size set of registers, assign each variable a register can be a hard task, because coloring graph with a fixed set of colors so that no adjacent nodes have the same color is NP-hard. Instead, we use a simple heuristics: 
 #align(center)[

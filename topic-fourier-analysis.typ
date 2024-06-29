@@ -1,9 +1,9 @@
 #import "template.typ": *
-#show: setup
+#show: with-setup
 
 = Fourier Analysis
 
-#todo[Organize written contents in fourier analysis]
+#task[Organize written contents in fourier analysis]
 
 // #summary[
 //     Fourier analysis originates from a series of endavour in solving differential equations. Later, this technique reveals the structure of differential operator, and works well with other tools in functional analysis. 
@@ -196,7 +196,7 @@
 
 // #thm("Solution to MechanicalW")[
 //     Solution to $"MechanicalW"(u, c, f, g)$ can be written as $u(x,t)=v(x - c t) + w(x + c t)$ , where $v$ and $w$ are $2 pi$-periodic functions. 
-//     #todo[def of $T$-periodic function]
+//     #task[def of $T$-periodic function]
 //     $
 //         v(x) = cases(
 //             & display(1/2 f(x) -1/2 integral_0^x c^(-1)g(x^*) dif x^*) 
@@ -298,7 +298,7 @@
 //     $
 //         u(x,t)=sin(m x)dot cos(m c(t-theta))
 //     $
-//     #todo[Uniqueness of solution given by Fourier Series]
+//     #task[Uniqueness of solution given by Fourier Series]
 // ]
 
 // #rmk("P-B:T:Solution_to_MechanicalW")[
@@ -365,7 +365,7 @@
 //         bold("where") #h(10pt)
 //         & u:RR^3 -> RR
 //     $
-//     #todo("Boundary Conditions")
+//     #task("Boundary Conditions")
 // ]
 
 // === Miscellaneous & Exercises
@@ -420,7 +420,7 @@
 //     $
 // ]
 
-// #todo[Clean up the exercises]
+// #task[Clean up the exercises]
 
 // == Fourier Series
 
@@ -463,7 +463,7 @@
 //     $
 //     Using integration by parts:
 //     $
-//         hat(f)(n) = (2pi)^(-1) #todo[...]
+//         hat(f)(n) = (2pi)^(-1) #task[...]
 //     $
 // ]
 
@@ -493,7 +493,7 @@
 //     $
 //         lim_(n->infinity) integral_a^b (zeta + cos((2pi(x-a))/(b-a)))^m f^(\\)(n)(x) dif x = 0
 //     $
-//     #todo[Finish this prf]
+//     #task[Finish this prf]
 // ]
 
 // #thm("Convergence of Trigonometric Series")[
@@ -508,8 +508,8 @@
 //     $
 //         forall x in [a,b] backslash E: lim_(n -> infinity) tilde(f)(n)(x) = f(x)
 //     $
-//     #todo[D of square Lebesgue integrable]
-//     #todo[P of this theorem]
+//     #task[D of square Lebesgue integrable]
+//     #task[P of this theorem]
 // ]
 
 // #col("T:Convergence_of_FourierS", alter: "Uniqueness of FourierS")[

@@ -1,7 +1,7 @@
 #import "template.typ": *
-#show: setup
+#show: with-setup
 
-= Self-supervised Systems
+= Self-supervision
 
 #summary[
     #tag[self-supervision] In current world, human cannot really label piece of data. Therefore, the efficacy of a data-driven system mostly depends on how algorithms can memorize meaningful representations without human instruction, and how well they apply these representations to downstream tasks. Self-supervision methods try to solve this problem by designing downstream-alike tasks where labeling can be automated. 
@@ -10,7 +10,7 @@
 
 == Language Modeling
 
-#todo[Language Modeling]
+#task[Language Modeling]
 
 === Low Rank Adaptation
 

@@ -1,5 +1,5 @@
 // #import "template.typ": *
-// #show: setup
+// #show: with-setup
 
 // = LLM Safety & Explainability
 

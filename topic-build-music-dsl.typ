@@ -1,5 +1,5 @@
 #import "template.typ": *
-#show: setup
+#show: with-setup
 
 = DSL for Digital Audio Processing
 
@@ -17,5 +17,5 @@ To solve this problem, I want to design a programming language that eventually d
 
 == Declarative State Manipulation
 
-#todo[Introducing ODE as state manipulation method, time as predefined free variable]
+#task[Introducing ODE as state manipulation method, time as predefined free variable]
 

@@ -1,5 +1,5 @@
 #import "template.typ": *
-#show: setup
+#show: with-setup
 
 = Logic, Types & Categories
 
@@ -24,7 +24,7 @@ record Category {o l e : Level} : Type (lsuc (o ⊔ l ⊔ e)) where field
     idr  : ∀ {f} → comp f id = f
 ```]
 
-#todo[Currently this is just pseudocode. Rewrite in AGDA. ]
+#task[Currently this is just pseudocode. Rewrite in AGDA. ]
 
 #tag[cat:notation] In the context of category theory, we use upper case $frak("FRAK")$ for functors, upper case $cal("CAL")$ for categories, normal lower case for morphisms, and normal upper case for objects. 
 
@@ -137,23 +137,23 @@ $
 
 #tag[top:simplicial-set:structure] For each order-preserving map $f$ mentioned in @top:delta-category, it can be decomposed into two kinds of maps, called "face map" and "degeneracy maps". 
 The face maps can be written as $f : forall {n: NN} => hom_(Delta)(n+1, n)$ , which removes an element from 
-#todo[face map and degeneracy map]
+#task[face map and degeneracy map]
 
 #tag[top:nerve] A nerve of a category $cal(C)$, written as $"nerve"_cal(C)$, is a simplicial set constructed from a (small) category using the following method. 
 
 
-#todo[definition of small category. ]
+#task[definition of small category. ]
 
-#todo[defintion of nerve]
+#task[defintion of nerve]
 
 == Logic
 
-#todo[Synthetic Tait Computability Paper: Logic]
+#task[Synthetic Tait Computability Paper: Logic]
 
 == Type Theory
 
-#todo[Synthetic Tait Computability Paper: TT]
+#task[Synthetic Tait Computability Paper: TT]
 
 == Cubical Type Theory
 
-#todo[Synthetic Tait Computability Paper: CTT]
+#task[Synthetic Tait Computability Paper: CTT]

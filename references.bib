@@ -5,6 +5,7 @@
    howpublished = {\url{http://en.wikipedia.org/w/index.php?title=Differential\%20privacy&oldid=1212542457}},
    note = "[Online; accessed 16-May-2024]"
 }
+
 @book{Paper:Optimal-Impl-FP,
    author = {Asperti, Andrea and Guerrini, Stefano},
    title = {The optimal implementation of functional programming languages},
@@ -13,12 +14,14 @@
    publisher = {Cambridge University Press},
    address = {USA}
 }
+
 @inproceedings{Paper:Paxos,
    title={Paxos Made Simple},
    author={Leslie Lamport},
    year={2001},
    url={https://api.semanticscholar.org/CorpusID:1936192}
 }
+
 @inproceedings{Paper:Raft,
    author = {Ongaro, Diego and Ousterhout, John},
    title = {In search of an understandable consensus algorithm},
@@ -33,6 +36,7 @@
    location = {Philadelphia, PA},
    series = {USENIX ATC'14}
 }
+
 @inproceedings{Paper:Agda-Categories,
    author = {Hu, Jason Z. S. and Carette, Jacques},
    title = {Formalizing Category Theory in Agda},
@@ -76,4 +80,49 @@
    isbn = {052158390X},
    publisher = {Press Syndicate of the University of Cambridge},
    abstract = {From the Publisher:This textbook describes all phases of a modern compiler: lexical analysis, parsing, abstract syntax, semantic actions, intermediate representations, instruction selection via tree matching, dataflow analysis, graph-coloring register allocation, and runtime systems. It includes good coverage of current techniques in code generation and register allocation, as well as functional and object-oriented languages, that is missing from most books. The most accepted and successful techniques are described in a concise way, rather than as an exhaustive catalog of every possible variant. Detailed descriptions of the interfaces between modules of a compiler are illustrated with actual C header files. A unique feature of the book is a well designed compiler implementation project in C, including front-end and "high-tech" back-end phases, so that students can build a complete working compiler in one semester.}
+}
+@article{Paper:OCC,
+   author = {Kung, H. T. and Robinson, John T.},
+   title = {On optimistic methods for concurrency control},
+   year = {1981},
+   issue_date = {June 1981},
+   publisher = {Association for Computing Machinery},
+   address = {New York, NY, USA},
+   volume = {6},
+   number = {2},
+   issn = {0362-5915},
+   url = {https://doi.org/10.1145/319566.319567},
+   doi = {10.1145/319566.319567},
+   abstract = {Most current approaches to concurrency control in database systems rely on locking of data objects as a control mechanism. In this paper, two families of nonlocking concurrency controls are presented. The methods used are “optimistic” in the sense that they rely mainly on transaction backup as a control mechanism, “hoping” that conflicts between transactions will not occur. Applications for which these methods should be more efficient than locking are discussed.},
+   journal = {ACM Trans. Database Syst.},
+   month = {jun},
+   pages = {213–226},
+   numpages = {14},
+   keywords = {concurrency controls, databases, transaction processing}
+}
+@article{Paper:Spectrum,
+   author = {Zhihao Chen, and Tianji Yang, Yixiao Zheng, Zhao Zhang, Cheqing Jin, Aoying Zhou},
+   title  = {Spectrum: Speedy and Strictly-Deterministic Smart Contract Transactions for Blockchain Ledgers},
+   year   = {2024},
+   journal = {PVLDB},
+   pages   = {2541-2554},
+   volume  = {17}
+}
+
+@article{Paper:Aria-DCC,
+   author = {Lu, Yi and Yu, Xiangyao and Cao, Lei and Madden, Samuel},
+   title = {Aria: a fast and practical deterministic OLTP database},
+   year = {2020},
+   issue_date = {August 2020},
+   publisher = {VLDB Endowment},
+   volume = {13},
+   number = {12},
+   issn = {2150-8097},
+   url = {https://doi.org/10.14778/3407790.3407808},
+   doi = {10.14778/3407790.3407808},
+   abstract = {Deterministic databases are able to efficiently run transactions across different replicas without coordination. However, existing state-of-the-art deterministic databases require that transaction read/write sets are known before execution, making such systems impractical in many OLTP applications. In this paper, we present Aria, a new distributed and deterministic OLTP database that does not have this limitation. The key idea behind Aria is that it first executes a batch of transactions against the same database snapshot in an execution phase, and then deterministically (without communication between replicas) chooses those that should commit to ensure serializability in a commit phase. We also propose a novel deterministic reordering mechanism that allows Aria to order transactions in a way that reduces the number of conflicts. Our experiments on a cluster of eight nodes show that Aria outperforms systems with conventional nondeterministic concurrency control algorithms and the state-of-the-art deterministic databases by up to a factor of two on two popular benchmarks (YCSB and TPC-C).},
+   journal = {Proc. VLDB Endow.},
+   month = {jul},
+   pages = {2047–2060},
+   numpages = {14}
 }
