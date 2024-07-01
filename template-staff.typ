@@ -158,5 +158,5 @@
 #set page(fill: bg-color)
 
 #staff(h: 1cm, w: 4cm,
-    six(-1, 1, 3), qua(-1, 0, 1), eig(0, 1)
+    six(-1, 0, 1, 2, 3), qua(-1, 0, 1), eig(0, 1, 2, 3)
 )
