@@ -76,6 +76,7 @@
 )
 #include "topic-arch-and-compilers.typ"
 #include "topic-distributed-computing.typ"
+#include "topic-dbms.typ"
 
 #build-eva-variant-1(
     595.28pt-5cm, 
