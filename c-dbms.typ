@@ -1,7 +1,7 @@
 #import "t-main.typ": *
 #show: with-setup
 
-= Database Management System
+= Database System
 
 == Storage & Index
 

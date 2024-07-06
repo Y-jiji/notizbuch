@@ -20,13 +20,15 @@
 
 #tag[algo:fix-variables] Suppose we want to compute $f(x,y,dots,z)$, we can fix some arguments to simplify the problem. 
 
+
+
 == Optimization Problems
 
 === Array Scanning
 
 #tag[algo:max-cont-seq] Given an array of integers, find the maximal sum of contiguous subarrays. 
 
-#tag[algo:max-cont-seq:solution] To solve @algo:max-cont-seq, we first try the prefix sum strategy so the maximal sum converts into the maximal difference $a[j]-a[i]$ between a pair of $(a[j],a[i])$, where $j >= i$. For each given $j$, we want to select the smallest $a[i]$, so we also compute a prefix minimum. 
+#tag[algo:max-cont-seq:solution] To solve @algo:max-cont-seq, we first try the prefix sum strategy so the maximal sum converts into the maximal difference $a[j]-a[i]$ between a pair of $(a[j],a[i])$, where $j >= i$. For each given $j$, we want to select the smallest $a[i]$, so we also compute a prefix minimum. This can be done on-the-fly to cut down on memory cost. 
 
 #align(center)[#rect(stroke: (dash: "dashed", thickness: 0.7pt), inset: 15pt)[
     ```rust
@@ -46,8 +48,11 @@
     ```
 ]]
 
-#tag[algo:scan] 
+#tag[algo:scan]
 
-=== 
+== Counting Problems
 
-== 
+== Number Theory Problems
+
+== Searching & Satisfiablity Problems
+

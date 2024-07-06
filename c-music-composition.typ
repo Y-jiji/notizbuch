@@ -9,6 +9,6 @@
 
 == Staff Notation
 
-== Recognizing Patterns
+#task[Finish the staff notation template]
 
-== 
+== Recognizing Patterns

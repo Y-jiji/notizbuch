@@ -63,7 +63,7 @@
     #set table(stroke: none)
     // set a slightly larger margin
     #set page(margin: (x: 14%))
-    // #set par(linebreaks: "optimized")
+    #set par(linebreaks: "optimized")
     // normal font
     #set text(font: font-normal, style: "normal", overhang: false)
     // italic font

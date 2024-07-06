@@ -79,8 +79,14 @@
 //                                                     //
 // --------------------===========-------------------- //
 
-#cover-0(595.28pt-5cm, 841.89pt-5cm, 2.5cm, 2.5cm, "Mathematical", "Analysis", "解析", "か", "いせき")
-#include "c-minimal-analysis.typ"
+#cover-0(
+    595.28pt-5cm, 
+    841.89pt-5cm, 
+    2.5cm, 2.5cm, 
+    "Mathematical", "Analysis", 
+    "解析", "か", "いせき"
+)
+#include "c-analysis-prequisites.typ"
 #include "c-fourier-analysis.typ"
 // #include "c-ordinary-diff-eq.typ"
 // #include "c-differential-geometry.typ"
@@ -101,8 +107,8 @@
     [Computing], [Theory], 
     "計算", "", "理論"
 )
-// #include "c-formal-languages.typ"
 #include "c-type-theory.typ"
+// #include "c-formal-languages.typ"
 
 // --------------------===========-------------------- //
 //                                                     //
