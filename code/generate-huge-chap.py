@@ -1,29 +1,40 @@
 import string
 import random
+import tqdm
 
 word = lambda: "".join([random.choice(string.ascii_letters) for i in range(random.randint(4, 6))])
-task = list(set(word() for i in range(1000)))
-tags = list(set(word() for i in range(1000)))
+task = list(set(word() for i in range(100000)))
+tags = list(set(word() for i in range(100000)))
 para = lambda: " ".join([
     f"@{random.choice(tags)}" if random.randint(0, 5) == 0 else word()
     for i in range(100)
 ])
 head = lambda: "=" * random.randint(1, 4) + " " + " ".join([word() for i in range(random.randint(2, 5))])
 
-text = task + [f"#tag[{t}] {para()}" for t in tags] + [head() for i in range(100)]
+text = (
+    [f"#task[{t}]" for t in tqdm.tqdm(task)]
+    + [f"#tag[{t}] {para()}" for t in tqdm.tqdm(tags)] 
+    + [head() for i in range(1000)]
+)
 
 random.shuffle(text)
 
 text = "\n\n" + "\n\n".join(text)
 
-chap = text.split("\n\n= ")
+text = text.split("\n\n= ")[1:]
 incl = []
 
-for c in chap:
+chap = """
+#import "t-main.typ": *
+#show: with-setup
+{}
+"""
+
+for c in tqdm.tqdm(text):
     f = c.split("\n")[0]
     incl.append(f)
-    with open(f, "w") as f:
-        print(c, file=f)
+    with open(f+".typ", "w") as f:
+        print(chap.replace("{cont}", c), file=f)
 
 book = """
 #import "t-main.typ": *
@@ -197,7 +208,7 @@ book = """
 #include "c-music-composition.typ"
 #include "c-motivation-and-improvision.typ"
 
-{0}
+{incl}
 
 // --------------------============------------------- //
 //                                                     //
@@ -223,7 +234,7 @@ book = """
 )
 """
 
-incl = "\n".join([f"#include \"{i}\"" for i in incl])
+incl = "\n".join([f"#include \"{i}.typ\"" for i in incl])
 
 with open("book.typ", "w") as f:
-    print(book.format(incl), file=f)
+    print(book.replace("{incl}", incl), file=f)
