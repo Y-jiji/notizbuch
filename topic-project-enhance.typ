@@ -11,7 +11,7 @@
 
 === Background
 
-#tag[miniob:intro] MiniOB is an educational database system, built by the Oceanbase Team as an internal training facility. Later Oceanbase hosted a database implementation contest, and used MiniOB as the prototype system. (https://github.com/oceanbase/miniob)
+#tag[miniob:intro] MiniOB is an educational database system, built by the Oceanbase Team as an internal training facility. Later Oceanbase hosted a database implementation contest, and used MiniOB as the prototype system (https://github.com/oceanbase/miniob). From the participants' comments that I collected, this codebase is really a shitbase. 
 
 #tag[miniob:environment] Luckily, MiniOB provides script for environment configuration. The `build.sh` in the root directory will install some library files in your system, which is sort of disgusting. Also, MiniOB only compiles with GCC. 
 

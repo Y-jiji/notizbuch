@@ -2,7 +2,55 @@
 
 #{
     show: with-page-setup
-    text(size: 2em)[#strong[Table of Contents]]
+    align(center, rect()[#rect(inset: 40pt, stroke: 0.5pt)[
+        #text(size: 60pt)[#strong[Y-jiji's Note]]
+    ]])
+    align(center)[
+        #text(size: 20pt)[#emph[Y-jiji & Friends]]
+    ]
+    align(center)[#rect(height: 70%, width: 90%, stroke: none)[
+        #place(center + bottom)[#text(10pt, fill: fg-color, stroke: none)[
+            #repeat[#rotate(-30deg)[Why?] #h(0.5em)]
+            #repeat[#rotate(-30deg)[Pardon?] #h(0.5em)]
+            #repeat[#rotate(30deg)[Why?] #h(0.5em)]
+            #repeat[#rotate(30deg)[Pardon?] #h(0.5em)]
+            #repeat[#rotate(-30deg)[Why?] #h(0.5em)]
+            #repeat[#rotate(-30deg)[Pardon?] #h(0.5em)]
+            #repeat[#rotate(30deg)[Why?] #h(0.5em)]
+            #repeat[#rotate(30deg)[Pardon?] #h(0.5em)]
+            #repeat[#rotate(-30deg)[Why?] #h(0.5em)]
+            #repeat[#rotate(-30deg)[Pardon?] #h(0.5em)]
+            #repeat[#rotate(30deg)[Why?] #h(0.5em)]
+            #repeat[#rotate(30deg)[Pardon?] #h(0.5em)]
+            #repeat[#rotate(-30deg)[Why?] #h(0.5em)]
+            #repeat[#rotate(-30deg)[Pardon?] #h(0.5em)]
+            #repeat[#rotate(30deg)[Why?] #h(0.5em)]
+            #repeat[#rotate(30deg)[Pardon?] #h(0.5em)]
+        ]]
+    ]]
+}
+
+// -----------------------=====----------------------- //
+//                                                     //
+//                        Tasks                        //
+//                                                     //
+// -----------------------=====----------------------- //
+
+#{
+    show: doc => with-setup(supplement: none, doc)
+    align(center)[#text(size: 2em)[#strong[Tasks]]]
+    task-display()
+}
+
+// -----------------=================----------------- //
+//                                                     //
+//                  Table of Contents                  //
+//                                                     //
+// -----------------=================----------------- //
+
+#{
+    show: with-page-setup
+    align(center)[#text(size: 2em)[#strong[Table of Contents]]]
     show outline.entry.where(): it => link(it.element.location())[
         #h(15pt + it.level * 15pt - 2 * 15pt)
         #it.body.children.at(0).text.split("/").at(1)
@@ -19,30 +67,18 @@
     outline(title: none)
 }
 
-// -----------------------=====----------------------- //
-//                                                     //
-//                        Tasks                        //
-//                                                     //
-// -----------------------=====----------------------- //
-
-#{
-    show: with-setup
-    heading(numbering: none, outlined: false)[A List of Tasks]
-    task-display()
-}
-
 // --------------------===========-------------------- //
 //                                                     //
 //                     Mathematics                     //
 //                                                     //
 // --------------------===========-------------------- //
 
-#build-eva-variant-0(595.28pt-5cm, 841.89pt-5cm, 2.5cm, 2.5cm, "Mathematical", "Analysis", "解析", "か", "いせき")
+#cover-0(595.28pt-5cm, 841.89pt-5cm, 2.5cm, 2.5cm, "Mathematical", "Analysis", "解析", "か", "いせき")
 #include "topic-fourier-analysis.typ"
 // #include "topic-ordinary-diff-eq.typ"
 // #include "topic-differential-geometry.typ"
 
-#build-eva-variant-0(
+#cover-0(
     595.28pt-5cm, 
     841.89pt-5cm, 
     2.5cm, 2.5cm, 
@@ -51,7 +87,7 @@
 )
 #include "topic-finite-linear-space.typ"
 
-#build-eva-variant-0(
+#cover-0(
     595.28pt-5cm, 
     841.89pt-5cm, 
     2.5cm, 2.5cm, 
@@ -67,7 +103,7 @@
 //                                                     //
 // --------------------===========-------------------- //
 
-#build-eva-variant-1(
+#cover-1(
     595.28pt-5cm, 
     841.89pt-5cm, 
     2.5cm, 2.5cm, 
@@ -78,7 +114,7 @@
 #include "topic-distributed-computing.typ"
 #include "topic-dbms.typ"
 
-#build-eva-variant-1(
+#cover-1(
     595.28pt-5cm, 
     841.89pt-5cm, 
     2.5cm, 2.5cm, 
@@ -89,7 +125,7 @@
 
 #include "topic-self-supervision.typ"
 
-#build-eva-variant-1(
+#cover-1(
     595.28pt-5cm, 
     841.89pt-5cm, 
     2.5cm, 2.5cm, 
@@ -100,6 +136,7 @@
 
 #include "topic-project-from-scratch.typ"
 #include "topic-project-enhance.typ"
+#include "topic-algorithmic-problem.typ"
 
 // --------------------===========-------------------- //
 //                                                     //
@@ -107,7 +144,7 @@
 //                                                     //
 // --------------------===========-------------------- //
 
-#build-eva-variant-1(
+#cover-1(
     595.28pt-5cm, 
     841.89pt-5cm, 
     2.5cm, 2.5cm, 
@@ -117,14 +154,15 @@
 )
 
 #include "topic-music-composition.typ"
+#include "topic-motivation-and-improvision.typ"
 
-// --------------------============-------------------- //
-//                                                      //
-//                     Bibliography                     //
-//                                                      //
-// --------------------============-------------------- //
+// --------------------============------------------- //
+//                                                     //
+//                     Bibliography                    //
+//                                                     //
+// --------------------============------------------- //
 
-#build-eva-variant-0(
+#cover-0(
     595.28pt-5cm, 
     841.89pt-5cm, 
     2.5cm, 2.5cm, 

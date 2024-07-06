@@ -1,6 +1,6 @@
 #import "template-attributes.typ": *
 
-#let build-eva-variant-0(width, height, h-margin, w-margin, long-0, long-1, short-0, short-1, short-2) = {
+#let cover-0(width, height, h-margin, w-margin, long-0, long-1, short-0, short-1, short-2) = {
     set text(fill: fg-color, font: "FOT-Matisse Pro")
     set page(fill: bg-color)
     show heading: it => {}
@@ -30,7 +30,7 @@
     }
 }
 
-#let build-eva-variant-1(width, height, h-margin, w-margin, long-0, long-1, short-0, short-1, short-2) = {
+#let cover-1(width, height, h-margin, w-margin, long-0, long-1, short-0, short-1, short-2) = {
     set text(fill: fg-color, font: "FOT-Matisse Pro", weight: "bold")
     set page(fill: bg-color)
     show heading: it => {}

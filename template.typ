@@ -1,14 +1,17 @@
 #import "template-tag.typ": *
 #import "template-summary.typ": *
 #import "template-attributes.typ": *
-#import "template-evagelion.typ": *
+#import "template-cover.typ": *
 #import "template-algorithm.typ": *
 #import "template-commute.typ": *
 #import "template-math.typ": *
 
-#let with-heading-setup(supplement: [Chapter], doc) = [
-    // use strong for reference
-    #show ref: it => strong([#it])
+#let with-head-setup(supplement: [Chapter], doc) = [
+    // use strong font for reference
+    #show ref: it => {
+        if it.element == none [#it]
+        else { set text(font: "EB Garamond"); [{#it}] }
+    }
     // change enumeration layout
     #set enum(numbering: n => [#h(0.25em) #str(n) .])
     // change bullet list layout
@@ -19,30 +22,36 @@
     #set figure(numbering: n => {
         let head = query(selector(heading).before(here())).last().location()
         let n = counter(figure).get().last() - counter(figure).at(head).last()
-        str(counter(heading).display("I.").split(".").at(0))
-        "/"
-        (counter(heading).get().slice(1)).map(str).join(".")
-        [\-#n]
+        let l1 = str(counter(heading).display("I.").split(".").at(0))
+        let l2 = (counter(heading).get().slice(1)).map(str).join(".")
+        if l2 == none { [#l1$*$#n] } else { [#l1/#l2$*$#n] }
     })
     // use heading
     #set heading(numbering: "I/1.1.", supplement: supplement)
     // add style to headings
     #show heading: it => {
-        if it.supplement == none {}
-        else {
-            set text(size: 24pt - 4pt * (it.level - 1))
-            strong(
-                if it.level > 1 [
-                    #counter(heading).get().slice(1).map(str).join("."). 
-                    #it.body
-                ]
-                else [
-                    #it.supplement #counter(heading).display() #it.body
-                ]
-            )
-            v(calc.max(12pt - 2pt * (it.level - 1), 0pt))
-        }
+        set text(size: 24pt - 4pt * (it.level - 1))
+        strong(
+            if it.level > 1 [
+                #counter(heading).get().slice(1).map(str).join("."). 
+                #it.body
+            ]
+            else if supplement == none [#it.body]
+            else [
+                #it.supplement #counter(heading).display() #it.body
+            ]
+        )
+        v(calc.max(12pt - 2pt * (it.level - 1), 0pt))
     }
+    // page numbering
+    #set page(footer: [
+        #set align(center)
+        #set text(8pt)
+        #counter(page).display(
+            "1 of 1",
+            both: true,
+        )
+    ])
     #doc
 ]
 
@@ -52,15 +61,6 @@
     #set text(fill: fg-color)
     #set line(stroke: fg-color)
     #set table(stroke: none)
-    // page numbering
-    #set page(footer: context [
-        #set align(center)
-        #set text(8pt)
-        #counter(page).display(
-            "1 of 1",
-            both: true,
-        )
-    ])
     // set a slightly larger margin
     #set page(margin: (x: 14%))
     // #set par(linebreaks: "optimized")
@@ -79,6 +79,6 @@
 
 #let with-setup(supplement: [Chapter], doc) = [
     #let doc = with-page-setup(supplement: supplement, doc)
-    #let doc = with-heading-setup(supplement: supplement, doc)
+    #let doc = with-head-setup(supplement: supplement, doc)
     #doc
 ]

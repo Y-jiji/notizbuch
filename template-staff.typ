@@ -135,7 +135,7 @@
     // compute length
     #let len = data.pos().len()
     // display each note on staff
-    #for (j, (sym, c, k)) in data.pos().enumerate() {
+    #for (j, last, (sym, c, k)) in zip-shl(data.pos()).enumerate() {
         if sym == "quater" { for t in k {
             quater(h+j/len*(w - h), int(t), h, c, t - int(t))
         }}
@@ -148,15 +148,15 @@
     }
 ]
 
+#let zip-shl(x) = {
+    let y = (none, ..x.slice(0, -1))
+    (..for i in range(x.len()) { ((y.at(i), x.at(i)), ) })
+}
+
 #let g(x) = ("g", x)
 #let qua(c: fg-color, ..x) = ("quater", c, x.pos().sorted())
 #let eig(c: fg-color, ..x) = ("eigth" , c, x.pos().sorted())
 #let six(c: fg-color, ..x) = ("sixteenth", c, x.pos().sorted())
 #let rest(x) = ("rest", x)
 
-#set text(font: "Palatino Linotype")
 #set page(fill: bg-color)
-
-#staff(h: 1cm, w: 4cm,
-    six(-1, 0, 1, 2, 3), qua(-1, 0, 1), eig(0, 1, 2, 3)
-)

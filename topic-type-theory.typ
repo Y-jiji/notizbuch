@@ -5,45 +5,77 @@
 
 #summary[
     #tag[tcs:division] The theory of computing is clearly divided into two pieces: one of them study what is computable, and the other study how fast we can compute. This chapter is about a recent endeavor to make logic verification computable in a less trivial way. 
-    #tag[trinity] The related content will serves as an introduction to logic and category theory. Therefore, other stuff about logic and category theory also goes here. 
+    #tag[tcs:trinity] The related content will serves as an introduction to logic and category theory. Therefore, other stuff about logic and category theory also goes here. 
 ]
 
 == Category Theory
 
 ===  Category & Functors
 
-#tag[cat] A category is a directed graph, where the arrows in category can be composed into another arrow in this graph. Formally, a category have the following components @Paper:Agda-Categories: 
-#align(center)[```agda
-record Category {o l e : Level} : Type (lsuc (o ⊔ l ⊔ e)) where field
-    obj  : Type o
-    hom  : obj → obj → Type o
-    id   : ∀ {A : obj} → hom A A
-    _@_  : ∀ {A B C : obj} → hom B C → hom A B → hom A C
-    ass  : ∀ {f} → ∀ {g} → ∀ {h} → f @ (g @ h) = (f @ g) @ h
-    idl  : ∀ {f} → comp id f = f
-    idr  : ∀ {f} → comp f id = f
-```]
+#tag[cat] A category is a directed graph, where the arrows in category can be composed into another arrow in this graph. Formally, a category $cal(C)$ have the following components: 
+$
+    "obj"_cal(C)
+        &: "Type"\
+    "hom"_cal(C)  
+        &: "obj"_cal(C) -> "obj"_cal(C) -> "Type"\
+    "id"_cal(C)   
+        &: forall {X :"obj"_cal(C)} sp "hom"_cal(C)(X,X)\
+    (compose)_(cal(C))
+        &: forall {X sp Y sp Z} sp
+            forall {f: hom_cal(C)(X,Y)} sp 
+            forall {g: hom_cal(C)(Y,Z)} sp 
+            hom_cal(C)(X,Z)\
+    "assoc"_cal(C)
+        &: forall {f sp g sp h: hom_cal(C)(dot.c, dot.c)} sp
+            f compose (g compose h) = (f compose g) compose h\
+    "id-left"_cal(C)
+        &: forall {f: hom_cal(C)(dot.c, dot.c)} sp 
+            "id"_cal(C)(dot.c) compose f = f\
+    "id-right"_cal(C)
+        &: forall {f: hom_cal(C)(dot.c, dot.c)} sp 
+            f compose "id"_cal(C)(dot.c) = f\
+$
 
-#task[Currently this is just pseudocode. Rewrite in AGDA. ]
+#tag[cat:notation] In the context of category theory, we use upper case $frak("FRAK")$ for functors, upper case $cal("CAL")$ for categories, normal lower case for morphisms, and normal upper case for objects. We use a $(dot)$ to replace something when it can be infered from context. For example, in @cat, we have written: 
+$
+"assoc"_cal(C)
+    &: forall {f sp g sp h: hom_cal(C)(dot.c, dot.c)} sp
+        f compose (g compose h) = (f compose g) compose h
+$
+(where $cal(C)$ is the specified category)\
+Because $(compose)_(cal(C))$ has some pre-conditions, we can rewrite it as: 
+$
+"assoc"_cal(C)
+    &:  forall {X sp Y sp Z sp W} sp
+        {f: hom_cal(C)(X, Y)} sp
+        {g: hom_cal(C)(Y, Z)} sp
+        {h: hom_cal(C)(Z, W)} sp
+        dots
+$
+We also omit type notation, for example, write ${X:A}$ as ${X}$ when we can infer $A$from context. 
 
-#tag[cat:notation] In the context of category theory, we use upper case $frak("FRAK")$ for functors, upper case $cal("CAL")$ for categories, normal lower case for morphisms, and normal upper case for objects. 
+#tag[cat:small] A category $cal(C)$ is small iff $"obj"_cal(C)$ and $"hom"_cal(C)$ are small. 
+#task[Definition of small sets. ]
 
-#tag[cat:opposite] An opposite category $cal(C^"op")$ of category $cal(C)$ is a category where each morphism is reversed. 
+#tag[cat:opposite] An opposite category $cal(C^"op")$ of category $cal(C)$ is a category where each morphism is reversed. The rest parts derive naturally. 
 $
     "obj"_cal(C^"op") = "obj"_cal(C)\
     "hom"_cal(C^"op")(X,Y) = "hom"_cal(C)(Y, X)
 $
 
-#tag[cat:functor] A functor $frak(F): cal(C) => cal(D)$ from category $cal(C)$ to category $cal(D)$ maps both objects and morphisms from $cal(C)$ to $cal(D)$. And keep the relation between objects and morphisms:
+#tag[cat:functor] A functor $frak(F): cal(C) => cal(D)$ from category $cal(C)$ to category $cal(D)$ maps both objects and morphisms from $cal(C)$ to $cal(D)$. We write $frak(F)(f)$ when mapping $f: hom_cal(C)(X,Y)$ to some $g: hom_cal(D)(X, Y)$ and write $frak(F)(X)$ for object $X: "obj"_cal(C)$. 
+A functor keeps the relation between objects and morphisms:
 $
-    forall { X sp Y : "obj"_cal(C) } sp
-    forall { f: hom_cal(C)(X,Y) } sp 
-        frak(F)(f):hom_cal(D)(X,Y)\
-    forall { f sp g : hom_cal(D)(bullet, bullet)} sp
+    & frak(F): 
+        forall { X sp Y : "obj"_cal(C) } sp
+        forall { f: hom_cal(C)(X,Y) } sp 
+        hom_cal(D)(X,Y)\
+    & "com"_(frak(F)): 
+        forall { f sp g : hom_cal(D)(dot.c, dot.c)} sp
         frak(F)(f compose g) = frak(F)(f) compose frak(F)(g)
 $
 
-#tag[cat:functor:notation] In @cat:functor, we write ${f sp g :hom_cal(D)(bullet, bullet)}$ to denote $f$ and $g$ can be any morphism that satisfy the prequisites of composition, i.e. when for some ${X sp Y}$ we have $g: hom_cal(C)(X,Y)$ then we must have $f: hom_cal(C)(Y,Z)$ . 
+#tag[cat:functor:notation] In @cat:functor, we write ${f sp g :hom_cal(D)(dot.c, dot.c)}$ to denote $f$ and $g$ can be any morphism that satisfy the prequisites of composition, i.e. when for some ${X sp Y}$ we have $g: hom_cal(C)(X,Y)$ then we must have $f: hom_cal(C)(Y,Z)$ . 
 
 #tag[cat:functor:contra-variant] For @cat:functor, mathematicians sometimes call functor $frak(F) : cal(C^"op") => cal(D)$ "contra-variant functor from $cal(C)$ to $cal(D)$". This is a matter of convenience and convention. 
 
@@ -92,7 +124,7 @@ $
     phi(X) = phi(Y) compose frak(F)(f)
 $
 
-#tag[cat:co-cone:illustration] Comparing @cat:co-cone and @cat:cone, we can find that in @cat:co-cone, the usage of $frak(F)(f)$ happens in the $phi(bullet)$'s co-domain instead of $phi(bullet)$'s domain, and the object that fills the $(bullet)$ is also "inversed". 
+#tag[cat:co-cone:illustration] Comparing @cat:co-cone and @cat:cone, we can find that in @cat:co-cone, the usage of $frak(F)(f)$ happens in the $phi(dot.c)$'s co-domain instead of $phi(dot.c)$'s domain, and the object that fills the $(dot.c)$ is also "inversed". 
 #align(center)[#commutative-diagram(
     node((0, 1), $A$, "A"),
     node((1, 0), $frak(F)(X)$, "FX"),
@@ -141,8 +173,6 @@ The face maps can be written as $f : forall {n: NN} => hom_(Delta)(n+1, n)$ , wh
 
 #tag[top:nerve] A nerve of a category $cal(C)$, written as $"nerve"_cal(C)$, is a simplicial set constructed from a (small) category using the following method. 
 
-
-#task[definition of small category. ]
 
 #task[defintion of nerve]
 

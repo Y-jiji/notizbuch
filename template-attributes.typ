@@ -3,8 +3,8 @@
 #let green = rgb("#00dd00")
 #let bg-color = rgb("#0b0b0b")
 #let fg-color = rgb("#cccccc")
-// #let bg-color = rgb("#ffffff")
-// #let fg-color = rgb("#000000")
+#let bg-color = rgb("#ffffff")
+#let fg-color = rgb("#000000")
 #let font-bold   = (
   "EB Garamond", 
   "Noto Serif CJK", 

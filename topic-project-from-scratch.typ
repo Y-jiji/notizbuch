@@ -23,3 +23,10 @@ The original codebase of Spectrum was adapted from Aria's codebase @Paper:Aria-D
 
 #task[Describe GraphChase] 
 
+== TMTB: A Timetable That Sucks Less
+
+=== Background
+
+#tag[tmtb:story] Most timetable applications require too much clicking. If you actually have learned how to operate an abacus, you know how it feels: it is just an operatable memorization tool, so after all, you still have to calculate everything yourself. Given what computational power of modern computers, that feels rural to me. And these timetables cannot even memorize information properly! For example, I would like to know whether some resource is available at a point, but there is no such a thing in a common timetable application. 
+
+=== Efficiency

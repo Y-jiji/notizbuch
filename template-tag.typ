@@ -19,9 +19,10 @@
 #let task-collector = state("task-collector", ())
 
 #let task(content) = [
-
-    // never remove this new line!
-    #text(green, style: "normal", [#place[#figure(kind: "task", supplement: none)[]#label(to-string(content))] [TODO: #content]])
+    #text(green, style: "normal", [
+        #place[#figure(kind: "task", supplement: none)[]#label(to-string(content))]
+        [TODO: #content]
+    ])
     #task-collector.update(x => { x.push((to-string(content), label(to-string(content)))); x })
 ]
 
