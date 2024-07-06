@@ -1,4 +1,4 @@
-#import "template-attributes.typ": *
+#import "t-attributes.typ": *
 
 #let node(pos, label, ..opts) = (
   kind: "node",

@@ -1,4 +1,4 @@
-#import "template-attributes.typ": *
+#import "t-attributes.typ": *
 
 // paint eigth note
 #let eigth(x, k, h, c, mark) = {

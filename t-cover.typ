@@ -1,4 +1,4 @@
-#import "template-attributes.typ": *
+#import "t-attributes.typ": *
 
 #let cover-0(width, height, h-margin, w-margin, long-0, long-1, short-0, short-1, short-2) = {
     set text(fill: fg-color, font: "FOT-Matisse Pro")

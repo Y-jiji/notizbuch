@@ -1,10 +1,10 @@
-#import "template-tag.typ": *
-#import "template-summary.typ": *
-#import "template-attributes.typ": *
-#import "template-cover.typ": *
-#import "template-algorithm.typ": *
-#import "template-commute.typ": *
-#import "template-math.typ": *
+#import "t-tag.typ": *
+#import "t-summary.typ": *
+#import "t-attributes.typ": *
+#import "t-cover.typ": *
+#import "t-algorithm.typ": *
+#import "t-commute.typ": *
+#import "t-math.typ": *
 
 #let with-head-setup(supplement: [Chapter], doc) = [
     // use strong font for reference

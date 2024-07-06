@@ -1,4 +1,4 @@
-#import "template-attributes.typ": *
+#import "t-attributes.typ": *
 #import "@preview/xarrow:0.3.0": xarrow
 
 #let pif = math.partial

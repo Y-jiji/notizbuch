@@ -1,4 +1,4 @@
-#import "template-attributes.typ": *
+#import "t-attributes.typ": *
 
 #let with-dejavu-font(x) = [// normal font
     #set text(font: "DejaVu Sans Mono", style: "normal", overhang: false, size: 10pt)

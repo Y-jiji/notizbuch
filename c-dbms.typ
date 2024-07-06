@@ -1,4 +1,4 @@
-#import "template.typ": *
+#import "t-main.typ": *
 #show: with-setup
 
 = Database Management System

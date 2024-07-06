@@ -1,4 +1,4 @@
-#import "template.typ": *
+#import "t-main.typ": *
 
 #{
     show: with-page-setup
@@ -74,9 +74,10 @@
 // --------------------===========-------------------- //
 
 #cover-0(595.28pt-5cm, 841.89pt-5cm, 2.5cm, 2.5cm, "Mathematical", "Analysis", "解析", "か", "いせき")
-#include "topic-fourier-analysis.typ"
-// #include "topic-ordinary-diff-eq.typ"
-// #include "topic-differential-geometry.typ"
+#include "c-minimal-analysis.typ"
+#include "c-fourier-analysis.typ"
+// #include "c-ordinary-diff-eq.typ"
+// #include "c-differential-geometry.typ"
 
 #cover-0(
     595.28pt-5cm, 
@@ -85,7 +86,7 @@
     "Advanced", "Algebra", 
     "代数", "だ", "いすう"
 )
-#include "topic-finite-linear-space.typ"
+#include "c-finite-linear-space.typ"
 
 #cover-0(
     595.28pt-5cm, 
@@ -94,8 +95,8 @@
     [Computing], [Theory], 
     "計算", "", "理論"
 )
-// #include "topic-formal-languages.typ"
-#include "topic-type-theory.typ"
+// #include "c-formal-languages.typ"
+#include "c-type-theory.typ"
 
 // --------------------===========-------------------- //
 //                                                     //
@@ -110,9 +111,9 @@
     "Engineering", "System", 
     "系", "統", "開発"
 )
-#include "topic-arch-and-compilers.typ"
-#include "topic-distributed-computing.typ"
-#include "topic-dbms.typ"
+#include "c-arch-and-compilers.typ"
+#include "c-distributed-computing.typ"
+#include "c-dbms.typ"
 
 #cover-1(
     595.28pt-5cm, 
@@ -123,7 +124,7 @@
     "人", "工", "知能"
 )
 
-#include "topic-self-supervision.typ"
+#include "c-self-supervision.typ"
 
 #cover-1(
     595.28pt-5cm, 
@@ -134,9 +135,9 @@
     "実", "務", "プログラミング"
 )
 
-#include "topic-project-from-scratch.typ"
-#include "topic-project-enhance.typ"
-#include "topic-algorithmic-problem.typ"
+#include "c-project-from-scratch.typ"
+#include "c-project-enhance.typ"
+#include "c-algorithmic-problem.typ"
 
 // --------------------===========-------------------- //
 //                                                     //
@@ -153,8 +154,8 @@
     "音", "楽", "制作"
 )
 
-#include "topic-music-composition.typ"
-#include "topic-motivation-and-improvision.typ"
+#include "c-music-composition.typ"
+#include "c-motivation-and-improvision.typ"
 
 // --------------------============------------------- //
 //                                                     //
