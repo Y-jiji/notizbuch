@@ -1,5 +1,11 @@
 #import "t-main.typ": *
 
+// --------------------==========--------------------- //
+//                                                     //
+//                     Book Cover                      //
+//                                                     //
+// --------------------==========--------------------- //
+
 #{
     show: with-page-setup
     align(center, rect()[#rect(inset: 40pt, stroke: 0.5pt)[
@@ -38,7 +44,7 @@
 
 #{
     show: doc => with-setup(supplement: none, doc)
-    align(center)[#text(size: 2em)[#strong[Tasks]]]
+    align(center)[#text(size: 2em)[#strong[Author Tasks]]]
     task-display()
 }
 

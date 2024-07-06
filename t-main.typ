@@ -10,7 +10,7 @@
     // use strong font for reference
     #show ref: it => {
         if it.element == none [#it]
-        else { set text(font: "EB Garamond"); [{#it}] }
+        else [ $angle.l$#it$angle.r$ ]
     }
     // change enumeration layout
     #set enum(numbering: n => [#h(0.25em) #str(n) .])

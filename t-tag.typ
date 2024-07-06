@@ -36,5 +36,5 @@
 
 #let tag(name) = strong[
     #place[#figure(kind: "Entry", supplement: none)[  ]#label(to-string[#name])]
-    \{#counter(figure).display()\}
+    $strong(angle.l)$#counter(figure).display()$strong(angle.r)$
 ]
