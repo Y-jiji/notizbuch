@@ -3,8 +3,8 @@ import random
 import tqdm
 
 word = lambda: "".join([random.choice(string.ascii_letters) for i in range(random.randint(4, 6))])
-task = list(set(word() for i in range(100000)))
-tags = list(set(word() for i in range(100000)))
+task = list(set(word() for i in range(10000)))
+tags = list(set(word() for i in range(10000)))
 para = lambda: " ".join([
     f"@{random.choice(tags)}" if random.randint(0, 5) == 0 else word()
     for i in range(100)
@@ -27,7 +27,8 @@ incl = []
 chap = """
 #import "t-main.typ": *
 #show: with-setup
-{}
+
+{cont}
 """
 
 for c in tqdm.tqdm(text):
