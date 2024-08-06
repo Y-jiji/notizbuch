@@ -88,7 +88,7 @@ $
     frak(F)(f) compose phi(X) = phi(Y)
 $
 
-#tag[cat:cone:illustration] In @cat:cone, the name "cone" seems like some abstract nonsense @Meme:Abstract-Nonsense, but when we examine it carefully, the commutative diagram actually looks like a cone, tipping on object $A$ . 
+#tag[cat:cone:illustration] In @cat:cone, the name "cone" seems like some abstract nonsense @Meme:Abstract-Nonsense , but when we examine it carefully, the commutative diagram actually looks like a cone, tipping on object $A$ . 
 #align(center)[#commutative-diagram(
     node((0, 1), $A$, "A"),
     node((1, 0), $frak(F)(X)$, "FX"),

@@ -9,8 +9,8 @@
 #let with-head-setup(supplement: [Chapter], doc) = [
     // use strong font for reference
     #show ref: it => {
-        if it.element == none [#it]
-        else [ $angle.l$#it$angle.r$ ]
+        if it.element == none [#strong[#it]]
+        else [ #strong[$strong(angle.l)$#it$strong(angle.r)$] ]
     }
     // change enumeration layout
     #set enum(numbering: n => [#h(0.25em) #str(n) .])

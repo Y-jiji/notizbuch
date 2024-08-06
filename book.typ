@@ -184,6 +184,7 @@
     "Appendix", "", "付録"
 )
 #show: it => with-setup(supplement: "Appendix", it)
+
 = References
 #bibliography(
     "references.bib", 
@@ -191,3 +192,5 @@
     title: none, 
     style: "ieee"
 )
+
+#include "c-casual-essay.typ"
