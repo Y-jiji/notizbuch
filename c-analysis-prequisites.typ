@@ -5,7 +5,7 @@
 
 == Basic Structures
 
-#task[Synthetic Definition of Real Numbers]
+#task[Synthetic Definition of Real Numbers] 
 
 == Sequences & Series
 

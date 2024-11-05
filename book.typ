@@ -36,18 +36,6 @@
     ]]
 }
 
-// -----------------------=====----------------------- //
-//                                                     //
-//                        Tasks                        //
-//                                                     //
-// -----------------------=====----------------------- //
-
-#{
-    show: doc => with-setup(supplement: none, doc)
-    align(center)[#text(size: 2em)[#strong[Author Tasks]]]
-    task-display()
-}
-
 // -----------------=================----------------- //
 //                                                     //
 //                  Table of Contents                  //
@@ -194,3 +182,15 @@
 )
 
 #include "c-casual-essay.typ"
+
+// -----------------------=====----------------------- //
+//                                                     //
+//                        Tasks                        //
+//                                                     //
+// -----------------------=====----------------------- //
+
+#{
+    show: doc => with-setup(supplement: none, doc)
+    align(center)[#text(size: 2em)[#strong[Author Tasks]]]
+    task-display()
+}
